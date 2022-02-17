@@ -1,0 +1,1 @@
+export const SERVER_PORT:number = 4800 || Number(process.env.PORT);
