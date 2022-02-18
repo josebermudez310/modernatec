@@ -17,7 +17,6 @@ class CreateCodigosTable extends Migration
             $table->id();
             $table->integer('codigo')->unique()->nullable();
             $table->timestamps();
-
             $table->unsignedBigInteger('numero_identificacion')->nullable();
             $table->foreign('numero_identificacion')->references('numero_identificacion')
             ->on('users')->onDelete('set null');
