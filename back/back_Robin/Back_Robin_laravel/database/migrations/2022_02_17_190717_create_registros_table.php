@@ -15,6 +15,12 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->id();
+            $table->date('fecha');
+            $table->time('hora_ingreso');
+            $table->time('hora_salida');
+            $table->unsignedBigInteger('numero_identificacion')->nullable();
+            $table->foreign('numero_identificacion')->references('numero_identificacion')
+            ->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

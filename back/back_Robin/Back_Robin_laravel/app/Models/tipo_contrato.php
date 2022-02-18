@@ -10,6 +10,6 @@ class tipo_contrato extends Model
     use HasFactory;
 
     public function tipo_contratos(){
-        return $this->hasMany('App\Models\contrato');
+        return $this->hasOne('App\Models\contrato');
     }
 }

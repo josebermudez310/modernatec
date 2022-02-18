@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContratosTable extends Migration
+class AddTipoCodigoToCodigosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateContratosTable extends Migration
      */
     public function up()
     {
-        Schema::create('contratos', function (Blueprint $table) {
-            $table->id();
-            $table->date("fecha_inicio");
-            $table->date("fecha_fin")->nullable();
+        Schema::table('codigos', function (Blueprint $table) {
+            $table->unsignedBigInteger('tipo_codigo')->nullable();
+            $table->foreign('tipo_codigo')->references('id')->on('tipo_codigos');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateContratosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contratos');
+        Schema::table('codigos', function (Blueprint $table) {
+            //
+        });
     }
 }
