@@ -6,10 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\App;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\area;
 use App\Models\contrato;
+=======
+use Laravel\Sanctum\HasApiTokens;
+>>>>>>> Jose
 
 class User extends Authenticatable
 {
@@ -44,6 +48,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+<<<<<<< HEAD
 
      public function areas(){
          return $this->hasMany('App\Models\area');
@@ -53,3 +58,6 @@ class User extends Authenticatable
      }
 
     }
+=======
+}
+>>>>>>> Jose
