@@ -8,11 +8,14 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 
+import { InputModule }from '../components/input/input.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    InputModule,
     RegisterPageRoutingModule
   ],
   declarations: [RegisterPage]
