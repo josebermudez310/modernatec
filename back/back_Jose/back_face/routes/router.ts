@@ -1,11 +1,12 @@
 //importaciones necesarias
-import { Router, Request, Response } from "express";
+import { Router} from "express";
+import { singledetect } from "../controllers/face";
+import fileUpload from 'express-fileupload';
 
 export const router= Router();
 
-router.get('/face',(req:Request,res:Response)=>{
-    res.json({
-        ok:true,
-        mensaje:'todo está bien'
-    })
-})
+router.use(fileUpload({
+    limits:{fileSize:6291456}
+}));
+
+router.post('/singledetect',singledetect) 
