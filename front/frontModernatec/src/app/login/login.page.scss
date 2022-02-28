@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
 ion-toolbar {
     --background: #c0ffff 100%;
     ion-buttom {
@@ -20,41 +21,31 @@ ion-content {
         img {
             width: 155px;
             height: 115px;
-            border-radius: 30%;
+            border-radius: 40%;
             border: 8px solid #ffffff;
         }
     }
     #form {
         margin-top: 15px;
-        padding-left: 30px;
-        padding-right: 30px;
+        padding-left: 15px;
+        padding-right: 15px;
         ion-button {
             margin-top: 35px;
             height: 48px;
             font-size: 18px;
             text-transform: initial;
-            border-radius: 50px;
+            border-radius: 15px;
             box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
         }
         h2 {
             color: white;
             font-weight: 100;
-            font-size: 26px;
+            font-size: 35px;
             margin-bottom: 15%;
             align-items: center;
             margin-top: 15px;
+            text-align: center;
+            font-family: 'Playball', 'cursive';
         }
     }
 }
-
-
-/* WhatsApp Image 2021-12-12 at 7.50 2 
-
-position: absolute;
-width: 360px;
-height: 800px;
-left: 360px;
-top: 0px;
-
-background: url(WhatsApp Image 2021-12-12 at 7.50.jpg);
-transform: matrix(-1, 0, 0, 1, 0, 0);*/

@@ -8,6 +8,7 @@ import { PasswordPageRoutingModule } from './password-routing.module';
 
 import { PasswordPage } from './password.page';
 
+
 import { InputModule }from '../components/input/input.module';
 
 @NgModule({

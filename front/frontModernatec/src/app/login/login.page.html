@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header class="ion-no-border" translucent="">
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-buttons color="primary">
@@ -12,21 +12,31 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <div id="header">
-        <img src="assets/icon/modernatec.png">
-    </div>
+<ion-content padding fullscreen="">
 
-    <ion-card>
-        <ion-card-content>
-            <form id="form">
+    <ion-grid fixed="">
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
+                <div id="header">
+                    <img src="assets/icon/modernatec.png">
+                </div>
 
-                <app-input placeholder="Email"></app-input>
-                <app-input type="password" placeholder="Password"></app-input>
-                <ion-button expand="block" shape="round" routerLink="/home">Ingresar</ion-button>
-                <h2 routerLink="/password">¿Se te olvido la contraseña?</h2>
-            </form>
+                <ion-card>
+                    <ion-card-content>
+                        <form id="form">
+                            <app-input placeholder="Email"></app-input>
+                            <app-input type="password" placeholder="Password">
+                                <ion-icon name="mail"></ion-icon>
+                            </app-input>
+                            <ion-button expand="block" shape="round" routerLink="/home" color="success">Ingresar</ion-button>
+                            <h2 routerLink="/password">¿Se te olvido la contraseña?</h2>
+                        </form>
 
-        </ion-card-content>
-    </ion-card>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+
 </ion-content>
