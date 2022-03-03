@@ -23,16 +23,25 @@
 
                 <ion-card>
                     <ion-card-content>
-                        <form id="form">
-                            <app-input placeholder="Email"></app-input>
-                            <app-input type="password" placeholder="Password">
+                        <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
+                            <ion-input placeholder="Email" type="email" formControlName="email">
                                 <ion-icon name="mail"></ion-icon>
-                            </app-input>
-                            <ion-button expand="block" shape="round" routerLink="/home" color="success">Ingresar</ion-button>
-                            <h2 routerLink="/password">¿Se te olvido la contraseña?</h2>
+                            </ion-input>
+                            <!--span class="text-danger" *ngIf="validCamps('email')">
+                                Campo no valido
+                            </span-->
+                            <ion-input type="password" placeholder="Password" formControlName="password">
+                                <ion-icon name="lock-closed"></ion-icon>
+                            </ion-input>
+                            <!--span class="text-danger" *ngIf="validCamps('password')">
+                                Campo no valido
+                            </span-->
+                            <ion-button expand="block" shape="round" type="submit" color="success">Ingresar</ion-button>
+
                         </form>
 
                     </ion-card-content>
+                    <h2 routerLink="/password">¿Se te olvido la contraseña?</h2>
                 </ion-card>
             </ion-col>
         </ion-row>

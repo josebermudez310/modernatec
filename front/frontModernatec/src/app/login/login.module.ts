@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { forwardRef, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
 
@@ -14,10 +14,18 @@ import { InputModule }from '../components/input/input.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     InputModule,
     LoginPageRoutingModule,
   ],
   declarations: [LoginPage],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LoginPage),
+      multi: true
+    }
+  ]
 })
 export class LoginPageModule {}
