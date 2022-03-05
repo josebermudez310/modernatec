@@ -25,6 +25,15 @@ ion-content {
             box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
             --box-shadow: none
         }
+        ion-input {
+            margin-top: 15px;
+            height: 48px;
+            font-size: 18px;
+            text-transform: initial;
+            border-radius: 25px;
+            background-color: white;
+            box-shadow: 1px 8px 8px 0px rgba(0, 0, 0, 0.05);
+        }
     }
     h2 {
         color: black;

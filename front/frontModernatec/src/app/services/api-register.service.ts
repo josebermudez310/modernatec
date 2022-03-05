@@ -7,7 +7,7 @@ const bas_url = environment.url_back
 @Injectable({
   providedIn: 'root'
 })
-export class ApiLoginService {
+export class ApiRegisterService {
 
   constructor(private http: HttpClient) { }
 
@@ -22,9 +22,12 @@ export class ApiLoginService {
   
 
   //* -> Metodo que enviara la info al back
-  login(data: {email: string, password: string}) {
+  register(data: {name: string,apellidos: string,telefono: string, email : string,numero_identificacion: string}) {
      
-    const api: string = `${bas_url}/auth/login`
+    const api: string = bas_url + "/auth/register"
+
+
+
      return this.http.post(api, data)
   }
 

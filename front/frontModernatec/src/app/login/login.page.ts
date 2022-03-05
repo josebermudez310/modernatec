@@ -19,10 +19,7 @@ export class LoginPage implements OnInit {
     private fb : FormBuilder,
     //* -> Inyeccion del servicio 
     private service_api : ApiLoginService,
-  ) {
-    
-    
-  }
+  ) {}
   
   ngOnInit() {
     this.loadFormLogin()
@@ -38,7 +35,7 @@ export class LoginPage implements OnInit {
     })
   }
 
-  async validCamps( campo: string ) {
+  validCamps( campo: string ) {
     if (!this.login_form.get(campo).invalid || !this.login_form.get(campo).touched) {
 
 
