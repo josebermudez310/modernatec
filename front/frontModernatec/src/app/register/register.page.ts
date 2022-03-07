@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
 //* -> Importacion del form
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiRegisterService } from '../services/api-register.service';
+import { RegisterRespose } from '../interfaces/respuestaRegistro';
+
+
+
 
 @Component({
   selector: 'app-register',
@@ -14,13 +19,25 @@ export class RegisterPage implements OnInit {
   //* -> Implementacion de propiedad del formGroup
   public register_form: FormGroup
 
+
+   //* -> Implementacion del arreglo 
+
+//respuestaRegister:RegisterRespose;
+
   constructor(//* -> propiedad privada que dara las propiedades al grup
     private fb : FormBuilder,
     //* -> Inyeccion del servicio 
-    private service_api : ApiRegisterService,) { }
+    private service_api : ApiRegisterService,
+    //*->alerta 
+  
+    
+    ) { }
 
   ngOnInit() {
+    
     this.loadFormRegister()
+    
+    
   }
 
   
@@ -51,22 +68,31 @@ export class RegisterPage implements OnInit {
   }
 
   //* -> metodo que enviara la peticion
+  //* -> metodo que traera el mensaje 
   submitPost() {
     // http://127.0.0.1:8000/api/auth/Register
     
     console.log(this.register_form.value);
     this.service_api.register(this.register_form.value).subscribe(
-      resp => {
-        
-        //let leaddetails = resp.json();
+      (resp: RegisterRespose) => {
+        //resp.message
 
-        //let leaddetails =JSON.stringify(resp.message);
+        console.log("message",resp.message);
+        console.log("Nombre:",resp.user.name );
 
-      //  console.log(leaddetails.senderNewCall);
-
-        //console.log(leaddetails);
-
-        console.log(resp);
+        //TODO: Crear alerta
+        // asyn alert() {
+        //   const alert = await this.alertController.create({
+        //     cssClass: 'alertaRegister',
+        //     header: 'BIENVENIDO'+ resp.user.name,
+           
+        //     message: resp.message,
+            
+        //   });
+      
+        //   await alert.alert();
+    
+     alert(resp.message + ' BIENVENIDO : ' + resp.user.name  );
 
       }, err => {
         

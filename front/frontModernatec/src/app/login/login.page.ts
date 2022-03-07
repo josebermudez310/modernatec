@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 //* -> Importacion del form
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginErrorResponse } from '../interfaces/respuestaLogin';
 import { ApiLoginService } from '../services/api-login.service';
 
 @Component({
@@ -53,8 +54,15 @@ export class LoginPage implements OnInit {
     this.service_api.login(this.login_form.value).subscribe(
       resp => {
         console.log(resp);
-      }, err => {
-        console.log(err);
+
+        
+
+        //TODO:Aqui llamado del HOME
+
+
+      }, (err:LoginErrorResponse) => {
+        console.log("error",err.error );
+        alert(err.error + ': Vuelva a ingresar los datos ' );
       }
     )
   }

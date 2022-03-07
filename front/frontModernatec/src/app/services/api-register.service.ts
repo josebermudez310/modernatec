@@ -11,11 +11,11 @@ export class ApiRegisterService {
 
   constructor(private http: HttpClient) { }
 
-  getTopHeadLines(){
+  //getRespuesta(){
     
-    // this.http.get('auth/login')
+    //return this.http.get<resultados>('http://127.0.0.1:8000/api/auth/register')
 
-  }
+ // }
 
 
   
