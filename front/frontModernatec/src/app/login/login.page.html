@@ -24,18 +24,28 @@
                 <ion-card>
                     <ion-card-content>
                         <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
-                            <ion-input placeholder="Email" type="email" formControlName="email">
+                            <ion-input 
+                            placeholder="Email" 
+                            type="email" 
+                            formControlName="email"
+                            [class.is-invalid]="emailNoValido">
+                            
                                 <ion-icon name="mail"></ion-icon>
                             </ion-input>
-                            <!--span class="text-danger" *ngIf="validCamps('email')">
-                                Campo no valido
-                            </span-->
-                            <ion-input type="password" placeholder="Password" formControlName="password">
+                            <small *ngIf="emailNoValido" class="text-light lead" id="small">
+                                Ingrese el correo
+                            </small>
+                            <ion-input 
+                            type="password" 
+                            placeholder="Password" 
+                            formControlName="password"
+                            required="true"
+                            [class.is-invalid]="passNoValido">
                                 <ion-icon name="lock-closed"></ion-icon>
-                            </ion-input>
-                            <!--span class="text-danger" *ngIf="validCamps('password')">
-                                Campo no valido
-                            </span-->
+                            </ion-input> 
+                            <small *ngIf="passNoValido" class="text-light lead"id="small">
+                                Ingrese su contraseña
+                            </small>
                             <ion-button expand="block" shape="round" type="submit" color="success">Ingresar</ion-button>
 
                         </form>
