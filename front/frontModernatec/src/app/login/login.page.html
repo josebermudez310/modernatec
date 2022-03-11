@@ -1,11 +1,5 @@
 <ion-header class="ion-no-border" translucent="">
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-buttons color="primary">
-                <ion-icon name="arrow-back-outline"></ion-icon>
-            </ion-buttons>
-        </ion-buttons>
-
         <ion-buttons slot="end">
             <ion-buttons routerLink="/register">Registrarse</ion-buttons>
         </ion-buttons>
@@ -24,26 +18,17 @@
                 <ion-card>
                     <ion-card-content>
                         <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
-                            <ion-input 
-                            placeholder="Email" 
-                            type="email" 
-                            formControlName="email"
-                            [class.is-invalid]="emailNoValido">
-                            
+                            <ion-input placeholder="Email" type="email" formControlName="email" [class.is-invalid]="emailNoValido">
+
                                 <ion-icon name="mail"></ion-icon>
                             </ion-input>
                             <small *ngIf="emailNoValido" class="text-light lead" id="small">
                                 Ingrese el correo
                             </small>
-                            <ion-input 
-                            type="password" 
-                            placeholder="Password" 
-                            formControlName="password"
-                            required="true"
-                            [class.is-invalid]="passNoValido">
+                            <ion-input type="password" placeholder="Password" formControlName="password" required="true" [class.is-invalid]="passNoValido">
                                 <ion-icon name="lock-closed"></ion-icon>
-                            </ion-input> 
-                            <small *ngIf="passNoValido" class="text-light lead"id="small">
+                            </ion-input>
+                            <small *ngIf="passNoValido" class="text-light lead" id="small">
                                 Ingrese su contraseña
                             </small>
                             <ion-button expand="block" shape="round" type="submit" color="success">Ingresar</ion-button>
