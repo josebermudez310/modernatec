@@ -5,7 +5,7 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+    loadChildren: () => import('./RolSeguridad/home/home-routing.module').then( m => m.HomePageRoutingModule),
     canActivate:[ AuthGuard ]
   },
   {
@@ -27,13 +27,18 @@ const routes: Routes = [
   },
   {
     path: 'password',
-    loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
+    loadChildren: () => import('./cambioContrasenaLogin/password/password.module').then( m => m.PasswordPageModule)
   },
   {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
   },
+  {
+    path: 'codigo',
+    loadChildren: () => import('./cambioContrasenaLogin/codigo/codigo.module').then( m => m.CodigoPageModule)
+  },
+
 
 ];
 

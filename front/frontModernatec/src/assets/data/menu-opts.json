@@ -1,0 +1,33 @@
+[
+    {
+      "icon": "american-football",
+      "name": "Inicio",
+      "redirectTo": "/action-sheet"
+    },
+    {
+      "icon": "appstore",
+      "name": "Visitantes",
+      "redirectTo": "/alert"
+    },
+    {
+      "icon": "beaker",
+      "name": "Reportes",
+      "redirectTo": "/avatar"
+    },
+    {
+      "icon": "radio-button-on",
+      "name": "Usuarios",
+      "redirectTo": "/botones"
+    },
+    {
+      "icon": "card",
+      "name": "Citas",
+      "redirectTo": "/card"
+    },
+    {
+      "icon": "checkmark-circle-outline",
+      "name": "Registros",
+      "redirectTo": "/check"
+    }
+  ]
+  
