@@ -1,33 +1,33 @@
 [
     {
-      "icon": "american-football",
+      "icon": "home",
       "name": "Inicio",
-      "redirectTo": "/action-sheet"
+      "redirectTo": "/home"
     },
     {
-      "icon": "appstore",
+      "icon": "people",
       "name": "Visitantes",
-      "redirectTo": "/alert"
+      "redirectTo": "/visitantes"
     },
     {
-      "icon": "beaker",
+      "icon": "document-text",
       "name": "Reportes",
-      "redirectTo": "/avatar"
+      "redirectTo": "/reportes"
     },
     {
-      "icon": "radio-button-on",
+      "icon": "person-circle",
       "name": "Usuarios",
-      "redirectTo": "/botones"
+      "redirectTo": "/usuarios"
     },
     {
-      "icon": "card",
+      "icon": "pencil",
       "name": "Citas",
-      "redirectTo": "/card"
+      "redirectTo": "/citas"
     },
     {
-      "icon": "checkmark-circle-outline",
+      "icon": "clipboard",
       "name": "Registros",
-      "redirectTo": "/check"
+      "redirectTo": "/registros"
     }
   ]
   

@@ -2,16 +2,17 @@
   <ion-menu side="start" menuId="first" contentId="main">
     <ion-header>
       <ion-toolbar color="primary">
-        <ion-title>Start Menu</ion-title>
+        <ion-title>Seguridad</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
+        <ion-item   *ngFor="let c of componentes "
+  [routerLink]="c.redirectTo" >
+  <ion-icon [name]="c.icon" slot="start"></ion-icon>
+  {{ c.name }}
+    
+      </ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

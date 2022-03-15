@@ -13,7 +13,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomePage {
 
-  componentes: Observable<Componente[]>;
+  componentes: Componente[];
 
   constructor(
     //activar el controlador del menu 
@@ -25,17 +25,13 @@ export class HomePage {
       //this.componentes= this.dataService.getMenuOpts();
       this.dataService.getMenuOpts().subscribe(
         resp => {
-          console.log(resp)
-       },
-       resp => {
-         this.componentes = resp   
-         } 
-        )
-      }   
+          this. componentes = resp
+       })
+    }   
 
     //activacion de mostrar el menu
-   // mostrarMenu(){
-     // this.menuController.open('first')
-   // }
+   mostrarMenu(){
+     this.menuController.open('first')
+   }
 
 }
