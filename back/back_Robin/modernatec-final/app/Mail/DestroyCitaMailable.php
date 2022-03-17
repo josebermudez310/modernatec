@@ -1,11 +1,5 @@
 <?php
 
-/**Robin David Rodriguez Bautista
- * 17-03-2022
- * Estudiante adsi
- */
-
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -13,10 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CitasMailable extends Mailable
+class DestroyCitaMailable extends Mailable
 {
-    public $subject = "Agendamiento citas";
     use Queueable, SerializesModels;
+    public $subject = "Cancelacion de cita citas";
 
     private $codigo;
 
@@ -30,7 +24,6 @@ class CitasMailable extends Mailable
         $this->codigo = $code;
     }
 
-
     /**
      * Build the message.
      *
@@ -38,7 +31,7 @@ class CitasMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.Citas') //devolvemos una vista y ademas le pasamos la variable con el codigo que va a ser utilizado
+        return $this->view('emails.DestroyCita') //devolvemos una vista y ademas le pasamos la variable con el codigo que va a ser utilizado
         ->with([
             'code' => $this->codigo,  // codigo que se va a enviar
         ]);

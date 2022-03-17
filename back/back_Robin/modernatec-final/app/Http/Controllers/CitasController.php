@@ -11,6 +11,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\Citas_UpdateMailable;
 use App\Mail\CitasMailable;
+use App\Mail\DestroyCitaMailable;
 use Illuminate\Http\Request;
 use App\Models\citas;
 use Illuminate\Support\Facades\Validator;
@@ -173,11 +174,18 @@ class CitasController extends Controller
 
         $user = response()->json(auth()->user());/**asignamos la informacion del token a una variable  */
         $rol_map = ($user->{'original'}->{'rol'});/**mapeamos el rol con el que biene el token  */
+        $usuario = DB::table('citas')->select('*')->where('codigo_cita', '=', $request->codigo_cita)->first();
+
         if ($rol_map == 1)/**si el rol es 1 entonces podra eliminar la cita  */
         {
+            $code = $usuario->codigo_cita;/**se asigna el codigo a la variable  */
+            $correo = new DestroyCitaMailable($code);/**se envia el codigo a la clase de codigos  */
+                     /**enviamos correos a las personas que se les asigno a la cita */
+            Mail::to($usuario->correo_solicitante)->send($correo);
+            Mail::to($usuario->correo_invitado)->send($correo);
 
             /**elimina la cita  */
-             citas::destroy($request->id);
+             citas::destroy($request->codigo_cita);
              return response()->json(
                  [
                      "message"=>"La cita se elimino"

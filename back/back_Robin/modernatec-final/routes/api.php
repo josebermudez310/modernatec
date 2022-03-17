@@ -69,6 +69,7 @@ Route::group([
 });
 
 
+
 Route::group([
     'middleware' => 'api',    // se llama al middelware para optenerlo en la api
     'prefix' => 'Registro'        //se coloca el prefix auth para que todas las url que lo contengan soliciten tokens esecto la de register y la de login
