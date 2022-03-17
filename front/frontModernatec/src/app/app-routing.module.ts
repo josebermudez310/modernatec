@@ -38,6 +38,28 @@ const routes: Routes = [
     path: 'codigo',
     loadChildren: () => import('./cambioContrasenaLogin/codigo/codigo.module').then( m => m.CodigoPageModule)
   },
+  {
+    path: 'visitantes',
+    loadChildren: () => import('./RolSeguridad/visitantes/visitantes.module').then( m => m.VisitantesPageModule)
+  },
+  {
+    path: 'home-admin',
+    loadChildren: () => import('./RolAdministrador/home-admin/home-admin.module').then( m => m.HomeAdminPageModule)
+  },
+  {
+    path: 'nueva-contrasena',
+    loadChildren: () => import('./cambioContrasenaLogin/nueva-contrasena/nueva-contrasena.module').then( m => m.NuevaContrasenaPageModule)
+  },  {
+    path: 'reportes',
+    loadChildren: () => import('./reportes/reportes.module').then( m => m.ReportesPageModule)
+  },
+  {
+    path: 'usuarios',
+    loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
+  },
+
+
+
 
 
 ];

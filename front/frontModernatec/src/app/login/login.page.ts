@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
         this.alerta = await this.alertController.create({
           cssClass: 'my-custom-class',
           header: 'credenciales validas',
-          message: 'bienvenido',
+          message: 'Bienvenido',
           backdropDismiss:false
         });
         loading.dismiss();

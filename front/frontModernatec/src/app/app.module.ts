@@ -10,8 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginPageModule } from './login/login.module';
 
 
+
 @NgModule({
-  declarations: [AppComponent,],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
