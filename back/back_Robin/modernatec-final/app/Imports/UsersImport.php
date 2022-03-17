@@ -1,5 +1,12 @@
 <?php
 
+/**Robin David Rodriguez Bautista
+ * 17-03-2022
+ * Estudiante adsi
+ */
+
+
+
 namespace App\Imports;
 
 use App\Models\User;
@@ -26,6 +33,13 @@ class UsersImport implements ToModel, WithHeadingRow, WithBatchInserts, WithChun
      */
     public function model(array $row)
     {
+
+
+/**Robin David Rodriguez Bautista
+ * En colaboracion con Jose Bermudez
+ * 17-03-2022
+ * Estudiante adsi
+ */
 
 
         if (in_array($row['numero_identificacion'], $this->numero_identificacion ))/**en caso de que al usuario se le repita el numero de identificacion se le mostrara la siguiente informacion  */

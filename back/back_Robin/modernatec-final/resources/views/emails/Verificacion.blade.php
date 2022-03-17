@@ -1,6 +1,11 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
+     <!--   /**Robin David Rodriguez Bautista
+ * 17-03-2022
+ * Estudiante adsi
+ */
+ -->
 </head>
 <body>
     <h2>Hola , gracias por registrarte en <strong>Modernatec</strong> !</h2>

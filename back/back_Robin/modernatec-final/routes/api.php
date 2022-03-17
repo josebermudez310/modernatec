@@ -1,5 +1,11 @@
 <?php
 
+ /**Robin David Rodriguez Bautista
+* 17-03-2022
+* Estudiante adsi
+*/
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;  //controlador de regitros y autenticacion con tokens

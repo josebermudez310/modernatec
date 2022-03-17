@@ -1,5 +1,11 @@
 <?php
 
+/**Robin David Rodriguez Bautista
+ * 17-03-2022
+ * Estudiante adsi
+ */
+
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
