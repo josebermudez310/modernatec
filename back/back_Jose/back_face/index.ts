@@ -15,7 +15,7 @@ server.app.use(bodyParser.json());
 server.app.use(cors({origin:true,credentials:true}));
 
 //rutas
-server.app.use('/',router);
+server.app.use('/api',router);
 
 server.start(()=>{
     console.log(`servidor corriendo en el puerto ${server.port}`);    
