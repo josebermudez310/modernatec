@@ -29,6 +29,4 @@
 En este código se pueden encontrar diferentes rutas desarrolladas para tener un buen funcionamiento del aplicativo, para saber de como utilizarlas te puedes dirigir a la siguiente ruta:
 https://documenter.getpostman.com/view/17244908/UVktoso5
 
-### Instalación
-
 
