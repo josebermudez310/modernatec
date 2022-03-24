@@ -1,33 +1,31 @@
-[
-    {
-      "icon": "home",
-      "name": "Inicio",
-      "redirectTo": "/home"
+[{
+        "icon": "home",
+        "name": "Inicio",
+        "redirectTo": "/home"
     },
     {
-      "icon": "people",
-      "name": "Visitantes",
-      "redirectTo": "/visitantes"
+        "icon": "people",
+        "name": "Visitantes",
+        "redirectTo": "/visitantes"
     },
     {
-      "icon": "document-text",
-      "name": "Reportes",
-      "redirectTo": "/reportes"
+        "icon": "document-text",
+        "name": "Reportes",
+        "redirectTo": "/reportes"
     },
     {
-      "icon": "person-circle",
-      "name": "Usuarios",
-      "redirectTo": "/usuarios"
+        "icon": "person-circle",
+        "name": "Usuarios",
+        "redirectTo": "/usuarios"
     },
     {
-      "icon": "pencil",
-      "name": "Citas",
-      "redirectTo": "/citas"
+        "icon": "pencil",
+        "name": "homeadmin",
+        "redirectTo": "/home-admin"
     },
     {
-      "icon": "clipboard",
-      "name": "Registros",
-      "redirectTo": "/registros"
+        "icon": "clipboard",
+        "name": "Registros",
+        "redirectTo": "/registros"
     }
-  ]
-  
+]

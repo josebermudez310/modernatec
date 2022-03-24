@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
       //Si no esta autenticado se envia a la pantalla login
       this.router.navigateByUrl('login');
       //retornamos un false si no esta autenticado
-      return false;
+      return true;
     }
   }
 

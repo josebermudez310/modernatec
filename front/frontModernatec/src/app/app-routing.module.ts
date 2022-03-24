@@ -29,11 +29,7 @@ const routes: Routes = [
     path: 'password',
     loadChildren: () => import('./cambioContrasenaLogin/password/password.module').then( m => m.PasswordPageModule)
   },
-  {
-    path: '**',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
+ 
   {
     path: 'codigo',
     loadChildren: () => import('./cambioContrasenaLogin/codigo/codigo.module').then( m => m.CodigoPageModule)
@@ -42,6 +38,8 @@ const routes: Routes = [
     path: 'visitantes',
     loadChildren: () => import('./RolSeguridad/visitantes/visitantes.module').then( m => m.VisitantesPageModule)
   },
+  
+  
   {
     path: 'home-admin',
     loadChildren: () => import('./RolAdministrador/home-admin/home-admin.module').then( m => m.HomeAdminPageModule)
@@ -49,17 +47,32 @@ const routes: Routes = [
   {
     path: 'nueva-contrasena',
     loadChildren: () => import('./cambioContrasenaLogin/nueva-contrasena/nueva-contrasena.module').then( m => m.NuevaContrasenaPageModule)
-  },  {
+  },
+  {
     path: 'reportes',
-    loadChildren: () => import('./reportes/reportes.module').then( m => m.ReportesPageModule)
+    loadChildren: () => import('./RolAdministrador/reportes/reportes.module').then( m => m.ReportesPageModule)
   },
   {
     path: 'usuarios',
-    loadChildren: () => import('./usuarios/usuarios.module').then( m => m.UsuariosPageModule)
+    loadChildren: () => import('./RolAdministrador/usuarios/usuarios.module').then( m => m.UsuariosPageModule)
+  },
+  {
+    path: 'foto',
+    loadChildren: () => import('./RolSeguridad/foto/foto.module').then( m => m.FotoPageModule)
   },
 
+  {
+    path: 'info-visitantes',
+    loadChildren: () => import('./RolSeguridad/info-visitantes/info-visitantes.module').then( m => m.InfoVisitantesPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  
 
-
+  
 
 
 ];

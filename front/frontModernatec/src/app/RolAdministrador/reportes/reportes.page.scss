@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+ion-toolbar {
+    --background: #206E7C;
+    ion-title {
+        font-family: 'Playball', 'cursive';
+        color: white;
+        font-weight: 100;
+        font-size: 35px;
+    }
+    ion-item {
+        color: white;
+        font-weight: 100;
+        font-size: 30px;
+        --background: #206E7C;
+    }
+}
+
+ion-content {
+    img {
+        width: 500px;
+        height: 400px;
+        margin-left: 750px;
+        margin-top: 200px;
+    }
+}
