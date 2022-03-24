@@ -8,6 +8,8 @@ import {HttpClientModule}from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginPageModule } from './login/login.module';
+//graficos
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -20,7 +22,8 @@ import { LoginPageModule } from './login/login.module';
      IonicModule.forRoot(),
       AppRoutingModule,
       HttpClientModule,
-      LoginPageModule
+      LoginPageModule,
+      NgChartsModule
     ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

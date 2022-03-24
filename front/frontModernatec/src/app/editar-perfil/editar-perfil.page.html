@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button menu="first"></ion-menu-button>
+        </ion-buttons>
+        <ion-title slot="start">Modernatec</ion-title>
+
+        <ion-item>
+            <ion-label slot="end">nombre</ion-label>
+
+            <ion-avatar slot="end">
+
+                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+
+        </ion-item>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content id="content">
+    <ion-grid fixed="">
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
+                <ion-card>
+                    <ion-card-content>
+                        <img src="https://colfecarga.com/taxi/assets/pages/media/profile/profile_user.jpg" width="150" height="150">
+                        <form>
+                            <ion-input disabled="true">Nombre</ion-input>
+                            <ion-input disabled="true">Apellidos</ion-input>
+                            <ion-input disabled="true" maxlength="15">Numero de indentificacion</ion-input>
+                            <ion-input disabled="true">Rol</ion-input>
+                            <ion-input placeholder="Telefono" maxlength="10"></ion-input>
+                            <ion-input placeholder="correo" type="email"></ion-input>
+                            <ion-button color="success" shape="round" routerLink="/editar-perfil" routerLinkActive="active">Guardar</ion-button>
+                            <ion-button color="danger" shape="round" routerLink="/perfil" routerLinkActive="active">Cancelar</ion-button>
+
+                        </form>
+
+                    </ion-card-content>
+
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

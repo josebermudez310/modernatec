@@ -1,7 +1,7 @@
 [{
         "icon": "home",
         "name": "Inicio",
-        "redirectTo": "/home"
+        "redirectTo": "/home-seguridad"
     },
     {
         "icon": "people",
@@ -19,13 +19,13 @@
         "redirectTo": "/usuarios"
     },
     {
-        "icon": "pencil",
+        "icon": "home",
         "name": "homeadmin",
         "redirectTo": "/home-admin"
     },
     {
-        "icon": "clipboard",
-        "name": "Registros",
-        "redirectTo": "/registros"
+        "icon": "person-circle",
+        "name": "perfil",
+        "redirectTo": "/perfil"
     }
 ]

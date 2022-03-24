@@ -8,11 +8,7 @@ const routes: Routes = [
     loadChildren: () => import('./RolSeguridad/home/home-routing.module').then( m => m.HomePageRoutingModule),
     canActivate:[ AuthGuard ]
   },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+ 
   {
     path: 'splash',
     loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
@@ -65,11 +61,34 @@ const routes: Routes = [
     path: 'info-visitantes',
     loadChildren: () => import('./RolSeguridad/info-visitantes/info-visitantes.module').then( m => m.InfoVisitantesPageModule)
   },
+ 
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'home-seguridad',
+    loadChildren: () => import('./RolSeguridad/home-seguridad/home-seguridad.module').then( m => m.HomeSeguridadPageModule)
+  },
+  {
+    path: 'editar-perfil',
+    loadChildren: () => import('./editar-perfil/editar-perfil.module').then( m => m.EditarPerfilPageModule)
+  },
+
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   {
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
   },
+ 
+
+  
+
   
 
   

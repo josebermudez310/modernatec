@@ -15,6 +15,29 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content>
-    <img src="../../../assets/icon/modernatec.png">
+<ion-content id="content">
+    <ion-grid fixed="">
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
+                <h1 routerLink="/reportes">Generar reporte </h1>
+                <h2>Seleccion del tipo de </h2>
+
+                <ion-item-group>
+                    <ion-button color="primary">lineas</ion-button>
+                    <ion-button color="secondary">Barra</ion-button>
+                    <ion-button color="tertiary">pastel</ion-button>
+                </ion-item-group>
+
+
+            </ion-col>
+
+            <!--grafica-->
+            <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12" *ngFor="let item of [1,1]">
+                <ion-card>
+                    <img src="../../../assets/icon/Grafica.jpg">
+
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
