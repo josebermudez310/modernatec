@@ -1,43 +1,41 @@
-<ion-header class="ion-no-border" translucent="">
-    <ion-toolbar>
-        <ion-buttons slot="end">
-            <ion-buttons routerLink="/register">Registrarse</ion-buttons>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" sizeLg="7" sizeMd="6" sizeSm="12">
+                <img src="../../assets/icon/inicioLogin.png" id="img">
+            </ion-col>
+            <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12">
 
-<ion-content padding fullscreen="">
 
-    <ion-grid fixed="">
-        <ion-row class="ion-justify-content-center">
-            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
-                <div id="header">
-                    <img src="assets/icon/modernatec.png">
-                </div>
-
-                <ion-card>
-                    <ion-card-content>
-                        <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
-                            <ion-input placeholder="Email" type="email" formControlName="email" [class.is-invalid]="emailNoValido">
-
-                                <ion-icon name="mail"></ion-icon>
-                            </ion-input>
-                            <small *ngIf="emailNoValido" class="text-light lead" id="small">
+                <form [formGroup]="login_form" (ngSubmit)="submitPost()" id="form">
+                    <img src="../../assets/icon/logo.png" id="logo">
+                    <h1><strong>BIENVENIDO</strong></h1>
+                    <ion-item>
+                        <ion-label position="floating">Email</ion-label>
+                        <ion-input type="email" formControlName="email" [class.is-invalid]="emailNoValido">
+                        </ion-input>
+                    </ion-item>
+                    <small *ngIf="emailNoValido" class="text-light lead" id="small">
                                 Ingrese el correo
                             </small>
-                            <ion-input type="password" placeholder="Password" formControlName="password" required="true" [class.is-invalid]="passNoValido">
-                                <ion-icon name="lock-closed"></ion-icon>
-                            </ion-input>
-                            <small *ngIf="passNoValido" class="text-light lead" id="small">
+
+                    <ion-item>
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input type="password" formControlName="password" required="true" [class.is-invalid]="passNoValido">
+                        </ion-input>
+                    </ion-item><br>
+
+                    <small *ngIf="passNoValido" class="text-light lead" id="small">
                                 Ingrese su contraseña
                             </small>
-                            <ion-button expand="block" shape="round" type="submit" color="success">Ingresar</ion-button>
+                    <ion-button expand="block" shape="round" type="submit" color="primary">Login</ion-button>
+                    <h2 routerLink="/password">¿Se te olvido la <strong>Contraseña</strong>?</h2>
+                    <h3 routerLink="/register">Da clic en <strong>Registrate</strong> si aun no <br> estas registrado</h3>
 
-                        </form>
 
-                    </ion-card-content>
-                    <h2 routerLink="/password">¿Se te olvido la contraseña?</h2>
-                </ion-card>
+                </form>
+
+
             </ion-col>
         </ion-row>
     </ion-grid>
