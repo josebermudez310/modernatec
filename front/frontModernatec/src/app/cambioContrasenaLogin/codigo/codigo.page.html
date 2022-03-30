@@ -1,28 +1,34 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-title routerLink="/login">Modernatec</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
-    <ion-grid fixed="">
-        <ion-row class="ion-justify-content-center">
-            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
-                <h2>Por favor ingrese el <br> codigo</h2>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" sizeLg="5" sizeMd="6" sizeSm="12" id="col">
+                <form id="form">
+
+
+                    <img src="../../assets/icon/logo.png" id="logo"><br>
+                    <img src="../../assets/icon/codigoPhoto.png" id="img" width="250" height="250">
+                </form>
+            </ion-col>
+            <ion-col size="12" sizeLg="7" sizeMd="6" sizeSm="12" id="col">
+                <h2> <strong>Confirmación del<br> codigo</strong></h2>
+
                 <ion-card>
                     <ion-card-content>
-                        <form id="form">
+                        <form>
 
                             <ion-item>
                                 <ion-label position="floating">Codigo</ion-label>
                                 <ion-input></ion-input>
-                            </ion-item>
-                            <ion-button expand="block" color="success" shape="round" routerLink="/nueva-contrasena">Enviar</ion-button>
+                            </ion-item><br>
+                            <ion-button expand="block" color="primary" shape="round" routerLink="/nueva-contrasena">Enviar</ion-button><br>
 
                         </form>
 
                     </ion-card-content>
                 </ion-card>
+
+
+
             </ion-col>
         </ion-row>
     </ion-grid>
