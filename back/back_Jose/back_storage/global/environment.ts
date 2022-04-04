@@ -1,3 +1,10 @@
 export const SERVER_PORT=Number(process.env.PORT)|| 4500;
 export const SECRET_KEY= 'HOLA';
 export const JWT_SECRET="fYUOwz4FWTuPunyNj5S49kaxQnKEGx6MEMWe7zxyAjkNFLe3S0BLQFwzohFb4R57";
+export const URL_APP= process.env.URL_APP ||  'localhost:4500';
+export const DB_HOST=process.env.DB_HOST || '127.0.0.1';
+export const DB_USER=process.env.SB_USER || 'root';
+export const DB_DATABASE= process.env.DB_DATA_BASE || 'modernatec';
+export const DB_PASSWORD= process.env.DB_PASSWORD || '';
+export const URL_BASE_AUTH= process.env.URL_BASE_AUTH || 'http://127.0.0.1:8000/api/auth'
+export const URL_BASE_USER= process.env.URL_BASE_USER || 'http://127.0.0.1:8000/api/users'

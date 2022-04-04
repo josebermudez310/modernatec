@@ -1,30 +1,40 @@
 //importaciones necesarias
 
 import { NextFunction, Request, Response } from "express"
-import jwt  from  "jsonwebtoken";
-import { JWT_SECRET, SECRET_KEY } from "../global/environment";
+import { AuthService } from '../services/auth.service';
 
-const validarJwt=(req:Request,res:Response,next:NextFunction)=>{
-
+const validarJwt=async (req:Request,res:Response,next:NextFunction)=>{
+    //traer variables enviadas en la peticion
     const token = req.header('x-token');
-
+    //varificar que se envie el token
     if( !token ) {
         return res.status(401).json({
             ok:false,
             msg: 'token no enviado'
         });
     }
+    //inicializacion del servicio
+    const authService:AuthService= new AuthService();
 
     try {
         
-        const validado = jwt.verify(token,JWT_SECRET);
-        next();
+        authService.verificarToken(token).then(
+            res=>{
+                req.params.rol=res.data.rol
+                console.log(res.data);   
+                next() ;
+            }
+        ).catch(
+            err=>{
+                return res.status(401).json({
+                    ok:false,
+                    msg:'token invalido'
+                });
+            }
+        )
 
     } catch (error) {
-        return res.status(401).json({
-            ok:false,
-            msg:'token invalido'
-        });
+       
     }
 
     

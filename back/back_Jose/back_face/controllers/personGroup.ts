@@ -14,7 +14,6 @@ const singledetect=(req:Request,res:Response)=>{
 
     const img = req.files.img;
 
-    console.log(img);
         
     const credentials = new ApiKeyCredentials({
         inHeader: { 'Ocp-Apim-Subscription-Key': KEY_FACE }
@@ -24,22 +23,23 @@ const singledetect=(req:Request,res:Response)=>{
 
     const sigleDetectedFace = async(img:UploadedFile)=>{
         await client.face.detectWithStream(img.data,{returnRecognitionModel:true,recognitionModel:"recognition_04",detectionModel:"detection_03"}).then((faces)=>{
-            console.log(faces[0]); 
             res.status(200).json({
                 ok:true,
                 msg:'Cara encontrada',
                 faces
             });
         }).catch((err)=>{
-            console.log(err);            
+            res.status(500).json({
+                ok:false,
+                msg:'Error al detectar cara'
+            })
         });
     }
     if(Array.isArray(img)){
         //for(let i = 0; i<img.length; i++){
           //  singledetect(img[i]);
         //}
-    }else{
-        console.log(img.data);   
+    }else{ 
         sigleDetectedFace(img) ;
     }   
 }
@@ -76,15 +76,17 @@ const listPersonGroup=async(req:Request,res:Response)=>{
     });
     const client = new FaceClient(credentials,ENDPOINT_FACE);
 
-    await client.personGroup.list().then((data)=>{
-        console.log(data);        
+    await client.personGroup.list().then((data)=>{    
         res.json({
             ok:true,
             msg:'Person groups encontrados',
             data
         });
     }).catch((err)=>{
-        console.log(err);
+        res.status(500).json({
+            ok:false,
+            msg:'Eroor al encontrar person groups'
+        })
     });    
 }
 

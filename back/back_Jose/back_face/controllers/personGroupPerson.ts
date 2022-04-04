@@ -50,8 +50,7 @@ const createPersonGroupPerson=async(req:Request,res:Response)=>{
         });
     
     const agregarCara=async(img:UploadedFile)=>{
-        console.log('guardando');        
-        await client.personGroupPerson.addFaceFromStream(GROUP_ID,idPerson.personId,img.data,{detectionModel:"detection_03"}).then((data)=>console.log(data))
+        await client.personGroupPerson.addFaceFromStream(GROUP_ID,idPerson.personId,img.data,{detectionModel:"detection_03"})
             .catch((err)=>{
                 return    res.status(404).json({
                     ok:false,
@@ -63,8 +62,7 @@ const createPersonGroupPerson=async(req:Request,res:Response)=>{
     
 
     if(Array.isArray(img)){
-        for(let i=0;i<img.length;i++){
-            console.log(i);            
+        for(let i=0;i<img.length;i++){           
             await agregarCara(img[i]);
         }
     }
@@ -111,25 +109,13 @@ const deletePersonGroupPerson=async(req:Request,res:Response)=>{
 
         let persona:any;
 
-        for (let i=0; i<data.length;i++){
-            console.log(i);
-
-
-            
-            if(data[i].name==id){
-                console.log(data[i]);
-                
+        for (let i=0; i<data.length;i++){            
+            if(data[i].name==id){    
                 persona= data[i].personId;
             }
         }
         return persona
     });
-
-    console.log(personaId);
-    
-
-    
-
     if(!personaId){
         return res.status(400).json({
             ok:false,
@@ -170,15 +156,11 @@ const addFacePersonGroupPerson=async(req:Request,res:Response)=>{
     const persona:any = await client.personGroupPerson.list(GROUP_ID).then((data)=>{
         const persona = data.map((element)=>{
             if(element.name==id){
-                console.log(element);
                 return element
             }
         });
         return persona
-    });
-
-    console.log(persona);
-    
+    });    
     if(!persona[0]){
         return res.status(400).json({
             ok:false,
@@ -186,9 +168,8 @@ const addFacePersonGroupPerson=async(req:Request,res:Response)=>{
         });
     }
 
-    const agregarCara=async(img:UploadedFile)=>{
-        console.log('guardando');        
-        await client.personGroupPerson.addFaceFromStream(GROUP_ID,persona[0].personId,img.data).then((data)=>console.log(data))
+    const agregarCara=async(img:UploadedFile)=>{       
+        await client.personGroupPerson.addFaceFromStream(GROUP_ID,persona[0].personId,img.data)
             .catch((err)=>{
                 return    res.status(404).json({
                     ok:false,
@@ -199,8 +180,7 @@ const addFacePersonGroupPerson=async(req:Request,res:Response)=>{
     }
 
     if(Array.isArray(img)){
-        for(let i=0;i<img.length;i++){
-            console.log(i);            
+        for(let i=0;i<img.length;i++){    
             await agregarCara(img[i]);
         }
     }else{
@@ -231,20 +211,12 @@ const identifyPersonGroupPerson=async(req:Request,res:Response)=>{
 
     let groupFacesIdentify:any
 
-    if(!Array.isArray(img)){
-        console.log(img.data);    
+    if(!Array.isArray(img)){   
         groupFacesIdentify= await client.face.detectWithStream(img.data,{recognitionModel:"recognition_04",detectionModel:"detection_03"}).then((data)=>{
             const faceIds = new Array();
-
-            console.log(data);
-            
-
             for(let face of data){
                 faceIds.unshift(face.faceId);    
-            }
-
-            console.log(`desde 240 ${faceIds}`);
-            
+            }    
             const filterIds = faceIds.filter((id)=>{
                 return id != null;
             });
@@ -258,19 +230,16 @@ const identifyPersonGroupPerson=async(req:Request,res:Response)=>{
             });
         });        
     }
-
-    console.log(groupFacesIdentify);    
+;    
 
     await client.face.identify(groupFacesIdentify,{personGroupId:GROUP_ID})
             .then((identifyResults)=>{
-                console.log(identifyResults);
                 res.json({
                     ok:true,
                     msg:'Identificando persona',
                     identifyResults
                 });                
             }).catch((err)=>{
-                console.log(err);
                 res.status(400).json({
                     ok:false,
                     msg:'Ha ocurrido algo al intentar identificar una persona',
@@ -284,8 +253,6 @@ const identifyPersonGroupPerson=async(req:Request,res:Response)=>{
 const identifyPeronsGroupPersonBase64=async(req:Request, res:Response)=>{
     const img = req.body.img;
 
-    console.log(req.body);
-    console.log(img);
     
 
     const credentials = new ApiKeyCredentials({
@@ -295,7 +262,7 @@ const identifyPeronsGroupPersonBase64=async(req:Request, res:Response)=>{
     const client = new FaceClient(credentials,ENDPOINT_FACE);
 
     
-    let buff = new Buffer (img,'base64');
+    let buff = Buffer.from(img,'base64');
     
 
     
@@ -307,8 +274,6 @@ const identifyPeronsGroupPersonBase64=async(req:Request, res:Response)=>{
         for(let face of data){
             faceIds.unshift(face.faceId);    
         }
-
-        console.log(`desde 240 ${faceIds}`);
         
         const filterIds = faceIds.filter((id)=>{
             return id != null;
@@ -325,7 +290,6 @@ const identifyPeronsGroupPersonBase64=async(req:Request, res:Response)=>{
     
     await client.face.identify(groupFacesIdentify,{personGroupId:GROUP_ID})
             .then((identifyResults)=>{
-                console.log(identifyResults);
                 res.json({
                     ok:true,
                     msg:'Identificando persona',
@@ -343,12 +307,10 @@ const identifyPeronsGroupPersonBase64=async(req:Request, res:Response)=>{
 
 const getPerson=async(req:Request,res:Response)=>{
 
-    console.log(req.query);
     
 
-    const idPerson= req.query.idperson;
+    const idPerson:any= req.query.idperson;
 
-    console.log(idPerson);
     
 
     if(!idPerson){
@@ -366,7 +328,7 @@ const getPerson=async(req:Request,res:Response)=>{
         (data)=>{
             res.json({
                 ok:true,
-                msg:'cara encontrada',
+                msg:'Persona encontrada',
                 identificacion: data.name
             })
         }
@@ -374,7 +336,7 @@ const getPerson=async(req:Request,res:Response)=>{
         (err)=>{
             res.status(400).json({
                 ok:false,
-                msg:'no se encontro la cara'
+                msg:'no se encontro la persona'
             })
         }
     )

@@ -1,0 +1,28 @@
+<ion-header >
+  <ion-toolbar>
+      <ion-title routerLink="/login">Modernatec</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed="">
+      <ion-row class="ion-justify-content-center">
+          <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
+              <h2>Por favor ingrese la <br>nueva contraseña  </h2>
+              <ion-card>
+                  <ion-card-content>
+                      <form id="form">
+
+                          <app-input placeholder="New Password"></app-input>
+                          <ion-button expand="block" color="success" shape="round" routerLink="/login">Enviar</ion-button>
+
+                      </form>
+
+                  </ion-card-content>
+              </ion-card>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+
+
+</ion-content>

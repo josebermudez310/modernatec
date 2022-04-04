@@ -1,3 +1,24 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar id="seguridad">
+        <ion-title >Seguridad</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content color="primary">
+      <ion-list color="primary">
+        <ion-item   *ngFor="let c of componentes "
+  [routerLink]="c.redirectTo"  color="primary" >
+  <ion-icon [name]="c.icon" slot="start"></ion-icon>
+  {{ c.name }}
+    
+      </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  
+  
+  
+  
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

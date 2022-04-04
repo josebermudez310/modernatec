@@ -11,4 +11,4 @@ import { IonicModule } from '@ionic/angular';
     exports:[InputComponent]
   
 })
-export class StoreModule {}
+export class InputModule {}

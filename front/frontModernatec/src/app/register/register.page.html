@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+        <img src="assets/icon/modernatec.png">
+        <ion-buttons slot="end">
+            <ion-buttons routerLink="/login">Inicio de sesión</ion-buttons>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid fixed="">
+        <ion-row class="ion-justify-content-center">
+            <ion-col size="12" sizeLg="8" sizeMd="10" sizeSm="12">
+                <h2>INGRESE LOS SIGUIENTES DATOS PARA<br>REGISTRARSE</h2>
+
+                <form [formGroup]="register_form" (ngSubmit)="submitPost()" id="form">
+                    <ion-input placeholder="Nombres" formControlName="name" ></ion-input>
+                    <ion-input placeholder="Apellidos" formControlName="apellidos" ></ion-input>
+                    <ion-input placeholder="Numero de Identificación" formControlName="numero_identificacion" maxlength="15" ></ion-input>
+                    <ion-input placeholder="Telefono" formControlName="telefono" maxlength="10" ></ion-input>
+                    <ion-input placeholder="Email" formControlName="email" type="email" ></ion-input>
+
+                    <ion-button expand="block" shape="round" type="submit" color="success">Registrarse</ion-button>
+
+                </form>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+
+</ion-content>
