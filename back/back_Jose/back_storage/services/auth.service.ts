@@ -1,7 +1,12 @@
+/**
+ * @author Jose Daniel Bermudez Salamanca
+ */
 //importaciones necesarias
 import axios from "axios";
+//importación de variables de entorno
 import { URL_BASE_AUTH, URL_BASE_USER } from '../global/environment';
 
+//creación de la clase que contendrá las funciones de autenticación
 export class AuthService{
     //función para verificar el token
     verificarToken(token:string){

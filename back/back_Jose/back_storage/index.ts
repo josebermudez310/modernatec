@@ -1,5 +1,7 @@
+/**
+ * @author Jose Daniel Bermudez Salamanca
+ */
 //importaciones necesarias
-
 import Server from "./classes/server";
 import cors from 'cors';
 import bodyParser from "body-parser";
@@ -19,6 +21,7 @@ server.app.use('/api/storage',routerStorage)
 //cors
 server.app.use(cors({origin:true,credentials:true}))
 
+//iniciamos el servidor
 server.start(()=>{
     console.log(`servidor corrriendo en el puerto ${server.port}`);
 })
