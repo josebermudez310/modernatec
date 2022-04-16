@@ -3,12 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import {HttpClientModule}from '@angular/common/http'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LoginPageModule } from './login/login.module';
-
+import { HttpClientModule } from '@angular/common/http';
+import { NgChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -16,12 +15,11 @@ import { LoginPageModule } from './login/login.module';
   entryComponents: [],
   imports: [
     BrowserModule,
-     IonicModule.forRoot(),
-      AppRoutingModule,
-      HttpClientModule,
-      LoginPageModule
-    ],
-
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule,
+    NgChartsModule
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
