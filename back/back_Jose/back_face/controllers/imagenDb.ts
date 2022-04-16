@@ -23,7 +23,7 @@ const setUrlImagen = async (req: Request, res: Response) => {
     //creacion de la coneccion
     const db = new Conection();
     //estabalecer coneccion con la base de datos
-    await db.conection.connect(
+    db.conection.connect(
         err => {
             //validar si ocurrió algun error
             if (err) {
@@ -37,7 +37,7 @@ const setUrlImagen = async (req: Request, res: Response) => {
     );
 
     //establecer las imagenes al usuario
-    await db.conection.query(`update users set url_imagen='${images}'where numero_identificacion=${numero_identificacion}`, (err, resp) => {
+   db.conection.query(`update users set url_imagen='${images}'where numero_identificacion=${numero_identificacion}`, (err, resp) => {
         //validamos si ocurre un error
         if (err) {
             //retornamos error 500

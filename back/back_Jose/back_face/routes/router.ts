@@ -10,8 +10,9 @@ import { createPersonGroup, deletePersonGroupId, listPersonGroup, listPersonGrou
 //importacion de los middlewares
 import { validarId } from "../middlewares/validarId";
 import { validarImgs, validarImgsCreate } from "../middlewares/validarImg";
-import { validarJwtBoth, validarJwtRegis, validarJwtSeg } from "../middlewares/validar-jwt";
+import { validarJwtAdm, validarJwtBoth, validarJwtRegis, validarJwtSeg } from "../middlewares/validar-jwt";
 import { validarFace } from "../middlewares/validarFace";
+import { getUltimosDias, getUltimosMeses } from "../controllers/registros";
 
 //inicializacion del router
 export const router= Router();
@@ -46,3 +47,7 @@ router.post('/identifypersonbase64',[validarJwtSeg],identifyPeronsGroupPersonBas
 
 //rutas para la gestion de base de datos
 router.post('/setimagenes',[validarJwtRegis,validarId],setUrlImagen)//ruta para establecer las imagenes a la base de datos
+
+//rutas para la obtención de los registros
+router.get('/ultimosdias',[validarJwtAdm],getUltimosDias)//ruta para obtener los últimos dias
+router.get('/ultimosmeses',[validarJwtAdm],getUltimosMeses)//ruta para obtener los últimos meses

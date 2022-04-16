@@ -331,18 +331,26 @@ const identifyPeronsGroupPersonBase64 = async (req: Request, res: Response) => {
             err
         });
     });
+    //validamos que se hayan encontrado caras
+    if(groupFacesIdentify.length==0){
+        //si no se encontraron caras respondemos error 400
+        return res.status(400).json({
+            ok:false,
+            msg:'no se encontraron caras'
+        })
+    }
     //llamamos al servicio de face api para hacer la identificación 
     await client.face.identify(groupFacesIdentify, { personGroupId: GROUP_ID })
         .then((identifyResults) => {
             //si todo sale bien respondemos satisfactoriamente
-            res.json({
+            return res.json({
                 ok: true,
                 msg: 'Identificando persona',
                 identifyResults
             });
         }).catch((err) => {
-            //si ocurre un error respondemos error 500
-            res.status(400).json({
+            //si ocurre un error respondemos error 400
+            return res.status(400).json({
                 ok: false,
                 msg: 'Ha ocurrido algo al intentar identificar una persona',
 

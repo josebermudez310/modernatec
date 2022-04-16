@@ -82,6 +82,44 @@ const validarJwtSeg = async (req: Request, res: Response, next: NextFunction) =>
     )
 }
 
+//middleware que valida si el token enviado es del rol administrador
+const validarJwtAdm = async (req: Request, res: Response, next: NextFunction) => {
+    //traer variables enviadas en la peticion
+    const token = req.header('x-token');
+    //varificar que se envie el token
+    if (!token) {
+        return res.status(401).json({
+            ok: false,
+            msg: 'token no enviado'
+        });
+    }
+    //inicializacion del servicio
+    const authService: AuthService = new AuthService();
+    //llamamos al servicio que nos trae la información del token
+    authService.verificarToken(token).then(
+        resp => {
+            //validamos que el rol sea administrador
+            if (resp.data.rol != '2') {
+                //si es diferente al rol seguridad se envia una respuesta 403
+                return res.status(403).json({
+                    ok: false,
+                    msg: 'No posee los permisos para realizar la accion'
+                })
+            }
+            //si el rol es seguridad dejamos continuar con el siguiente middleware  
+            next();
+        }
+    ).catch(
+        err => {
+            //si ocurre un error retornamos una respuesta 401
+            return res.status(401).json({
+                ok: false,
+                msg: 'token invalido'
+            });
+        }
+    )
+}
+
 //middleware que valida si el token enviado es del rol seguridad o registros
 const validarJwtBoth = async (req: Request, res: Response, next: NextFunction) => {
     //traer variables enviadas en la peticion
@@ -124,5 +162,6 @@ const validarJwtBoth = async (req: Request, res: Response, next: NextFunction) =
 export {
     validarJwtRegis,
     validarJwtSeg,
-    validarJwtBoth
+    validarJwtBoth,
+    validarJwtAdm
 }

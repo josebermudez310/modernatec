@@ -20,7 +20,7 @@ export class Conection {
             password: DB_PASSWORD,
             database: DB_DATABASE,
             port:3306,
-            ssl: {ca: fs.readFileSync(path.join(__dirname,'DigiCertGlobalRootCA.crt.pem'))}//utilización del ssl
+            ssl: {ca: fs.readFileSync(path.join(__dirname,'DigiCertGlobalRootCA.crt.pem'))}
         })
     }
     //función para destruir la conexión con la base de datos
