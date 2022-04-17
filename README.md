@@ -25,7 +25,7 @@ Es un sistema de información que esta deseñado para llevar a cabo el control d
 * :hammer: Más sobre **[Ionic](https://como-programar.net/blog/como-instalar-ionic/)** :round_pushpin:
 
 ## :memo: Autores. 
-* :crown: Orealis Ospina Puentes.
+* :soccer: Orealis Ospina Puentes.
+* :soccer: Giver Andrea Martinez Hernandez.
 * :soccer: Robin David Rodriguez Bautista.
 * :soccer: Jose Daniel Bermudez Salamanca.
-* :ribbon: Giver Andrea Martinez Hernandez.
