@@ -1,0 +1,2 @@
+## Backend Modernatec
+El back se divide en dos: back_Jose y back_Robin, en el primero encontrará todo lo relacionado con el reconocimiento facial y la gestión de imagenes y en el segundo se encontrara todo lo realcionado con la base dedatos, envio de correos, etc.
