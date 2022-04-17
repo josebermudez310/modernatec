@@ -1,3 +1,6 @@
+/**
+ * @author Jose Daniel Bermudez Salamanca
+ */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {catchError, map, tap} from 'rxjs/operators';

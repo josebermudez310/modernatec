@@ -30,8 +30,8 @@ export class DataBaseComponent implements OnInit {
       file:[,Validators.required]
     })
   }
-  cambiarArchivo(file:File){
-    this.archivo=file  
+  cambiarArchivo(file){
+    this.archivo=file.files[0] 
   }
 
   async subirdb(){

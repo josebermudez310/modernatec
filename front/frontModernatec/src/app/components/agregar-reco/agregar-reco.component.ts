@@ -35,7 +35,7 @@ export class AgregarRecoComponent implements OnInit {
   agregarImagen(event, posicion) {
 
     const reader = new FileReader();
-    this.img[posicion] = event;
+    this.img[posicion] = event.files[0];
     reader.readAsDataURL(event);
 
     reader.onload = () => {
