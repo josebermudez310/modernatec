@@ -20,6 +20,7 @@ export class LoginGuard implements CanActivate {
         if(resp=='sin rol'){
           return true;
         }else{
+          
           this.router.navigate([`/user/${resp}`])
         }
       }

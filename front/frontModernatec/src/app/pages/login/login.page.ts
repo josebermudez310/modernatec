@@ -102,6 +102,7 @@ export class LoginPage implements OnInit {
             await this.alerta.dismiss();
             this.authService.perfil().subscribe(
               (resp:any)=>{
+                
                 switch (resp.rol) {
                   case 1:
                     this.router.navigate(['/user/admin-regis'],{replaceUrl:true});

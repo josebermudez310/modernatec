@@ -47,11 +47,11 @@ export class AuthService {
   autenticarRol():Observable<string>{
     const tok=localStorage.getItem('token')||'' 
     return this.http.post(`${this.url}/me`,{token:tok}).pipe(map((resp:any)=>{
-      if(resp.id==1){
+      if(resp.rol==1){
         return 'admin-regis';
-      }else if(resp.id==2){
+      }else if(resp.rol==2){
         return 'admin-home';
-      }else if(resp.id==3){
+      }else if(resp.rol==3){
         return 'home-seg';
       }
     }))
@@ -60,8 +60,8 @@ export class AuthService {
   //atenticación de usuario registro
   autenticarReg():Observable<boolean>{ 
     const tok=localStorage.getItem('token')||'';
-    return this.http.post(`${this.url}/me`,{token:tok}).pipe(map((resp:any)=>{
-      if(resp.id==1){
+    return this.http.post(`${this.url}/me`,{token:tok}).pipe(map((resp:any)=>{  
+      if(resp.rol==1){
         return true
       }else{
         return false
@@ -74,7 +74,7 @@ export class AuthService {
   autenticarSeg():Observable<boolean>{  
     const tok=localStorage.getItem('token')||'' 
     return this.http.post(`${this.url}/me`,{token:tok}).pipe(map((resp:any)=>{
-      if(resp.id==3){
+      if(resp.rol==3){
         return true
       }else{
         return false
@@ -87,7 +87,7 @@ export class AuthService {
   autenticarAdm():Observable<boolean>{  
     const tok=localStorage.getItem('token')||'' 
     return this.http.post(`${this.url}/me`,{token:tok}).pipe(map((resp:any)=>{
-      if(resp.id==2){
+      if(resp.rol==2){
         return true
       }else{
         return false
