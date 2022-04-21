@@ -162,6 +162,7 @@ const trainPersonGroup = async (req: Request, res: Response) => {
     const client = new FaceClient(credentials, ENDPOINT_FACE);
     //llamamos al servicio para poner en entrenaiento el grupo de personas
     await client.personGroup.train(GROUP_ID).then((data) => {
+      
         //si todo sale bien respondemos satisfactoriamente
         res.json({
             ok: true,
@@ -169,12 +170,14 @@ const trainPersonGroup = async (req: Request, res: Response) => {
             data
         });
     }).catch((err) => {
+        
         //si ocurre un error respondemos error 500
         res.status(500).json({
             ok: false,
             msg: 'No se ha podido iniciar el entrenamiento',
             err
         })
+
     });
 }
 //exportamos las funciones del controlador

@@ -9,7 +9,8 @@ import { Conection } from "../db/config";
 //funcion, permite establecer al usuario las urls de sus imagenes guardadas 
 const setUrlImagen = async (req: Request, res: Response) => {
     //traer variables enviadas en la peticion
-    const numero_identificacion = req.body.numero_identificacion;
+    let numero_identificacion:number | string = req.body.numero_identificacion;
+    numero_identificacion = numero_identificacion.toString();
     const urlImgs = JSON.parse(req.body.urlImgs);
     //validar que se reciba las urls y sea un array
     if (!Array.isArray(urlImgs)) {
@@ -37,9 +38,10 @@ const setUrlImagen = async (req: Request, res: Response) => {
     );
 
     //establecer las imagenes al usuario
-   db.conection.query(`update users set url_imagen='${images}'where numero_identificacion=${numero_identificacion}`, (err, resp) => {
+   db.conection.query(`update users set url_imagen='${images}' where numero_identificacion='${numero_identificacion}'`, (err, resp) => {
         //validamos si ocurre un error
         if (err) {
+            
             //retornamos error 500
             return res.status(500).json({
                 ok: false,

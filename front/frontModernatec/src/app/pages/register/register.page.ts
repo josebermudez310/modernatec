@@ -64,9 +64,9 @@ export class RegisterPage implements OnInit {
       //* -> Extructura { propiedad: [ tipo_campo&&valor, [ validadores ] ] }
       name: [ '', [ Validators.required ] ],
       apellidos: [ '', [ Validators.required ] ],
-      telefono: [ '', [ Validators.required,Validators.maxLength(10),Validators.minLength(10) ] ],
+      telefono: [ '', [ Validators.required,Validators.pattern('[0-9]+'),Validators.minLength(10),Validators.maxLength(10)] ],
       email : [ '', [ Validators.required,Validators.email ] ],
-      numero_identificacion: [ '', [ Validators.required] ]
+      numero_identificacion: [ '', [Validators.required,Validators.pattern('[0-9]+'),Validators.minLength(5)] ]
 
 
 

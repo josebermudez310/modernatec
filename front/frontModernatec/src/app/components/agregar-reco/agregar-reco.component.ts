@@ -36,7 +36,7 @@ export class AgregarRecoComponent implements OnInit {
 
     const reader = new FileReader();
     this.img[posicion] = event.files[0];
-    reader.readAsDataURL(event);
+    reader.readAsDataURL(event.files[0]);
 
     reader.onload = () => {
       this.preview[posicion] = reader.result;
@@ -116,6 +116,7 @@ export class AgregarRecoComponent implements OnInit {
         )
       },
       async err => {
+        
         const alert = await this.alertCtr.create({
           header:'Error al agregar reconocimiento facial',
           message:err.error.msg,

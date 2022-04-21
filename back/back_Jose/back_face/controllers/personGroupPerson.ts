@@ -81,7 +81,7 @@ const createPersonGroupPerson = async (req: Request, res: Response) => {
     });
 }
 //función para obtener todas las personas de un grupo de personas
-const listPersonGroupPerson = async (res: Response) => {
+const listPersonGroupPerson = async (req:Request,res: Response) => {
     //creamos las credenciales para acceder al servicio de face api
     const credentials = new ApiKeyCredentials({
         inHeader: { 'Ocp-Apim-Subscription-Key': KEY_FACE }
