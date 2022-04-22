@@ -18,9 +18,7 @@ class CorreosController extends Controller
                          'codes' => null]);
 
                          //cuando realizamos la confirmacion colocamos el campo del codigo en null y el campo de confirmacion en 1
-             return response()->json([  //cuando se registran los datos se devuelve los siguientes mensajes
-                'message' => 'El correo fue confirmado'
-            ]);
+             return view('bienvenida');
         }
         // en caso de que se este intentando confirmar un codigo el cual no este registrado o haya expirado le devolvera el siguiente mensaje
         return response()->json([

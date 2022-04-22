@@ -119,7 +119,7 @@ export class CreateUserComponent implements OnInit {
                     this.userForm.value.apellidos = this.userForm.value.apellidos.toUpperCase();
                     this.userForm.value.id_contrato=resp.id_contrato.id;
                     this.userForm.value.estado="true";
-                    this.userForm.value.id_area=1
+                    this.userForm.value.id_area=this.userForm.value.rol;
                     this.userForm.value.password="Modernatec2021*"
                     this.userService.createUser(this.userForm.value).subscribe(
                       async resp=>{
@@ -135,6 +135,8 @@ export class CreateUserComponent implements OnInit {
                         }, 3000);
                       },
                       async err=>{
+                        console.log(err);
+                        
                         const alert = await this.alertCtr.create({
                           message:'No se ha podido crear el usuario',
                           buttons:['ok']
