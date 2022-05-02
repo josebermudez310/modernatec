@@ -178,7 +178,7 @@ const addFacePersonGroupPerson = async (req: Request, res: Response) => {
       //creamos el ciclo para poder acceder a cada una de las personas guardadas en face api
       for (let i = 0; i < data.length; i++) {
           //verificamos que el id coincida 
-          if (data[i].name == id) {
+          if (data[i].name == id) {              
               //si coincide añadimos a la variable persona el valor con el cual coincide el id enviado
               persona = data[i].personId;
           }
@@ -186,6 +186,7 @@ const addFacePersonGroupPerson = async (req: Request, res: Response) => {
       //retornamos la información de la persona encontrada
       return persona
     });
+    
     //validamos que exista una persona con el id enviado
     if (!personaID) {
         //si no existe una persona con el id enviado respondemos error 400
@@ -197,8 +198,8 @@ const addFacePersonGroupPerson = async (req: Request, res: Response) => {
     //funcion para agregar caras de una imagen
     const agregarCara = async (img: UploadedFile) => {
         //llamamos al servicio de face api para agregar una cara desde una imagen
-        await client.personGroupPerson.addFaceFromStream(GROUP_ID, personaID.personId, img.data)
-            .catch((err) => {
+        await client.personGroupPerson.addFaceFromStream(GROUP_ID, personaID, img.data)
+            .catch((err) => {    
                 //si ocurre un error respondemos error 500
                 return res.status(500).json({
                     ok: false,

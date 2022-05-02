@@ -26,6 +26,7 @@ import { ModalUserSegPageModule } from '../pages/modal-user-seg/modal-user-seg.m
 import { CameraPreview } from '@awesome-cordova-plugins/camera-preview/ngx';
 import { ModalCitaPageModule } from '../pages/modal-cita/modal-cita.module';
 import { ModalUserPageModule } from '../pages/modal-user/modal-user.module';
+import { AdicionarRecoComponent } from './adicionar-reco/adicionar-reco.component';
 
 
 
@@ -48,7 +49,8 @@ import { ModalUserPageModule } from '../pages/modal-user/modal-user.module';
     CreateCitaComponent,
     UpdateCitaComponent,
     HomeSegComponent,
-    AgregarRecoComponent
+    AgregarRecoComponent,
+    AdicionarRecoComponent,
   ],
   imports: [
     CommonModule,
@@ -79,7 +81,8 @@ import { ModalUserPageModule } from '../pages/modal-user/modal-user.module';
     CreateCitaComponent,
     UpdateCitaComponent,
     HomeSegComponent,
-    AgregarRecoComponent
+    AgregarRecoComponent,
+    AdicionarRecoComponent,
   ]
 })
 export class ComponentsModule { }

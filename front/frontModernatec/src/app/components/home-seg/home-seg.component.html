@@ -11,9 +11,8 @@
         <ion-card-header>
             <!--TITULO PRINCIPAL-->
 
-            <ion-card-title>
+            <ion-card-title class="ion-card-title">
                 <strong>SONRIE A LA CAMARA</strong>
-
             </ion-card-title>
 
 
@@ -21,17 +20,26 @@
 
         <ion-card-content>
             <!--incercion de la camara en pantalla-->
-            <video id="videoRef" #video [srcObject]="currentStram" (loadedmetadata)="(loadedMetaData())"></video><br>
+            <video *ngIf="!android" id="videoRef" #video [srcObject]="currentStram" (loadedmetadata)="(loadedMetaData())"></video><br>
             <!--Botones para la camara-->
 
             <ion-button *ngIf="android" color="primary" (click)="tomarFoto()" shape="round">Verificar identidad</ion-button>
             <!--Hay que eliminar esta parte del modal ya que ya esta creada en pages/modal-seg-->
         </ion-card-content>
-
-
-
+    </ion-card>
+    <ion-card class="text-black">
+        <ion-card-header>
+            <ion-card-title>
+                Actualmente en el lugar: {{personasActual}}
+            </ion-card-title>
+            <ion-card-subtitle>
+                <ion-button (click)="descargarReporte()">
+                    Descargar reporte con los usuarios actuales
+                </ion-button>
+            </ion-card-subtitle>
+        </ion-card-header>
     </ion-card>
 
 
 
-</ion-content>
+</ion-content> 

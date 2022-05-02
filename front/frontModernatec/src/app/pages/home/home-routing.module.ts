@@ -24,6 +24,7 @@ import { AdminGuard } from '../../guards/admin.guard';
 import { RegGuard } from '../../guards/reg.guard';
 import { SegGuard } from '../../guards/seg.guard';
 import { HomeGuard } from '../../guards/home.guard';
+import { AdicionarRecoComponent } from '../../components/adicionar-reco/adicionar-reco.component';
 
 const routes: Routes = [
   {//declaración de la ruta principal
@@ -111,6 +112,11 @@ const routes: Routes = [
       {
         path:'agregar-reconocimiento/:id',
         component:AgregarRecoComponent,
+        canActivate:[RegGuard]
+      },
+      {
+        path:'adicionar-reconocimiento/:id',
+        component:AdicionarRecoComponent,
         canActivate:[RegGuard]
       }
     ]

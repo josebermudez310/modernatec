@@ -182,8 +182,13 @@
                         <div class="col-12">
                             <ion-row *ngIf="usuario[0].url_imagen">
                                 <!--Imagenes por defecto-->
-                                <div class="col-4 " *ngFor="let image of imagenes">
+                                <div class="col-3 " *ngFor="let image of imagenes">
                                     <ion-img alt="imagen del usuario" [src]="imagen(image)"></ion-img>
+                                </div>
+                                <div class="col-3 text-center">
+                                    
+                                    <ion-icon [routerLink]="'/user/adicionar-reconocimiento/'+usuario[0].numero_identificacion" [replaceUrl]="true"  name="add-circle-outline"></ion-icon>
+                                    
                                 </div>
                             </ion-row>
                             <ion-row class="text-center">

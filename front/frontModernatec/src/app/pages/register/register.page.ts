@@ -99,6 +99,7 @@ export class RegisterPage implements OnInit {
     await loading.present();
     this.register_form.value.name=this.register_form.value.name.toUpperCase();
     this.register_form.value.apellidos=this.register_form.value.apellidos.toUpperCase();
+
     this.authService.register(this.register_form.value).subscribe(
       async (resp:any)=>{  
         if(!resp.message1){
@@ -130,7 +131,7 @@ export class RegisterPage implements OnInit {
         this.alerta = await this.alertController.create({
           cssClass: 'my-custom-class',
           header: 'Error al registrarse',
-          message: 'Por favor intente más terde',
+          message: 'Por favor intente más tarde',
           buttons:['ok']
         });
         loading.dismiss();
@@ -138,4 +139,5 @@ export class RegisterPage implements OnInit {
       }
     )
   }
+  
 }

@@ -123,6 +123,7 @@ export class LoginPage implements OnInit {
         
         
       }, async err => {
+        
         this.alerta = await this.alertController.create({
           cssClass: 'my-custom-class',
           header: 'credenciales no validas',

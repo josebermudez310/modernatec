@@ -33,7 +33,7 @@ export class AgregarRecoComponent implements OnInit {
   ngOnInit() { }
 
   agregarImagen(event, posicion) {
-
+    
     const reader = new FileReader();
     this.img[posicion] = event.files[0];
     reader.readAsDataURL(event.files[0]);

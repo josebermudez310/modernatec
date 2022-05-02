@@ -4,6 +4,7 @@ import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment.prod';
 import { map } from 'rxjs/operators';
 import { identity } from 'rxjs';
+import { WebSocketService } from './web-socket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class UsuariosService {
   token: string;
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    public wsService:WebSocketService
   ) {
     this.token = this.authService.userToken;
   }
@@ -134,5 +136,12 @@ export class UsuariosService {
   updatePerfil(data){
     data.token=this.token;
     return this.http.post(`${this.url}/perfil_update`,data);
+  }
+
+  getActual(){
+    return this.wsService.listen('actual');
+  }
+  sendActual(){
+    this.wsService.emit('nuevo-ingreso');
   }
 }

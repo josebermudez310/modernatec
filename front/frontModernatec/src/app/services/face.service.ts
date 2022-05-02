@@ -37,6 +37,13 @@ export class FaceService {
     return this.http.put(`${this.url}/persongroupperson/${id}`,formData,{headers:{'x-token':this.userToken}});
   }
 
+  addFotosRec(img:File[],id:string){
+    const formData = new FormData();
+    Array.from(img).forEach( f => formData.append('img', f));
+
+    return this.http.post(`${this.url}/persongroupperson/${id}`,formData,{headers:{'x-token':this.userToken}});
+  }
+
   trainIa(){
     return this.http.post(`${this.url}/persongroup`,{},{headers:{'x-token':this.userToken}});
   }

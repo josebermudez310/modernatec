@@ -6,22 +6,31 @@ import Server from "./classes/server";
 import cors from 'cors';
 import bodyParser from "body-parser";
 import { routerStorage } from "./routes/storage";
+import { routerCitasStorage } from './routes/citasStorage';
+import Cron from './classes/cron';
 
-const server= new Server();
+//llamamos al cron
+const cron = new Cron();
+//iniciamos el cron
+cron.correoNoConfirmado.start();
+//llamamos la instance del servidor
+const server = Server.instance;
 
 //body-parser
-server.app.use(bodyParser.urlencoded({extended:true}));
+server.app.use(bodyParser.urlencoded({ extended: true }));
 server.app.use(bodyParser.json());
 
 
-
-//rutas
-server.app.use('/api/storage',routerStorage)
-
 //cors
-server.app.use(cors({origin:true,credentials:true}))
+server.app.use(cors({ origin: true, credentials: true }));
+
+//rutas para el storage del usuario
+server.app.use('/api/storage', routerStorage);
+//rutas para el storage de las citas
+server.app.use('/api/citasstorage', routerCitasStorage);
+
 
 //iniciamos el servidor
-server.start(()=>{
+server.start(() => {
     console.log(`servidor corrriendo en el puerto ${server.port}`);
 })

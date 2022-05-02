@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { ModalCitaPage } from '../../pages/modal-cita/modal-cita.page';
 import { CitasService } from '../../services/citas.service';
 
@@ -15,7 +15,8 @@ export class CodigoCitaComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private modalctr:ModalController,
-    private citasService:CitasService
+    private citasService:CitasService,
+    private alertCtr:AlertController
   ) { }
 
   ngOnInit() {
@@ -42,7 +43,7 @@ export class CodigoCitaComponent implements OnInit {
     }
 
     this.citasService.getCita(this.formulario.value).subscribe(
-      async resp=>{        
+      async resp=>{              
         this.formulario.reset();
         if(resp){
           const modal = await this.modalctr.create({
@@ -52,6 +53,12 @@ export class CodigoCitaComponent implements OnInit {
             }
           });
           await modal.present();
+        }else{
+          const alert = await this.alertCtr.create({
+            message:'No hay ninguna cita con ese código',
+            buttons:['ok']
+          })
+          await alert.present();
         }
         
       }
