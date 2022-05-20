@@ -13,8 +13,8 @@
                 <form [formGroup]="userForm" (submit)="actualizar()">
                     <!--Informacion principal del usuario para actualizar-->
                     <ion-row>
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
-                            <div class=" mb-3 has-validation">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
+                            <div class=" has-validation">
                                 <ion-item>
                                     <ion-label position="stacked">Nombres</ion-label>
                                     <ion-input type="text" formControlName="name" [class.is-invalid]="nameNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!nameNoValido && this.userForm.get('name').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
@@ -27,8 +27,8 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
-                            <div class="mb-3 ">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
+                            <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Apellidos</ion-label>
                                     <ion-input type="text" formControlName="apellidos" [class.is-invalid]="apellidosNoValido" pattern="[a-zA-Z\u00C0-\u00FF ]+" [class.is-valid]="!apellidosNoValido && this.userForm.get('apellidos').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
@@ -41,7 +41,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Número de identificación</ion-label>
@@ -55,8 +55,8 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
-                            <div class="mb-3 ">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
+                            <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Telefono</ion-label>
                                     <ion-input type="text" formControlName="telefono" [class.is-invalid]="telefonoNoValido" [class.is-valid]="!telefonoNoValido && this.userForm.get('telefono').touched" aria-label="Username" aria-describedby="basic-addon1"></ion-input>
@@ -69,7 +69,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Correo electrónico</ion-label>
@@ -83,7 +83,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label>Tipo de Rol:</ion-label>
@@ -102,7 +102,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label>Tipo de contrato:</ion-label>
@@ -115,7 +115,7 @@
                             </div>
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Fecha de inico</ion-label>
@@ -124,7 +124,7 @@
                             </div>
                         </ion-col>
                         <!--Informacion principal del usuario para actualizar-->
-                        <div class="col-6 col-lg-6 col-md-12 col-sm-12" id="col">
+                        <div class="col-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Fecha de fin</ion-label>
@@ -133,7 +133,7 @@
 
                             </div>
                         </div>
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 *ngIf="createContract" id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12" *ngIf="createContract">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label>Tipo de contrato:</ion-label>
@@ -151,7 +151,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion solicitada para el usuario-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 *ngIf="createContract" id="col">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12" *ngIf="createContract">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Fecha de inico</ion-label>
@@ -165,7 +165,7 @@
                             <!--fin del ngIf-->
                         </ion-col>
                         <!--Informacion solicitada para el usuario-->
-                        <ion-col size="12" size-lg="6" size-md="12" size-sm mb-3 id="col" *ngIf="userForm.value.id_contrato==1">
+                        <ion-col size="12" size-lg="6" size-md="12" sizeSm="12" *ngIf="userForm.value.id_contrato==1">
                             <div class="mb-3">
                                 <ion-item>
                                     <ion-label position="stacked">Fecha de fin</ion-label>
@@ -186,9 +186,9 @@
                                     <ion-img alt="imagen del usuario" [src]="imagen(image)"></ion-img>
                                 </div>
                                 <div class="col-3 text-center">
-                                    
-                                    <ion-icon [routerLink]="'/user/adicionar-reconocimiento/'+usuario[0].numero_identificacion" [replaceUrl]="true"  name="add-circle-outline"></ion-icon>
-                                    
+
+                                    <ion-icon [routerLink]="'/user/adicionar-reconocimiento/'+usuario[0].numero_identificacion" [replaceUrl]="true" name="add-circle-outline"></ion-icon>
+
                                 </div>
                             </ion-row>
                             <ion-row class="text-center">

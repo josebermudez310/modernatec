@@ -37,6 +37,7 @@ export class UpdateCitaComponent implements OnInit {
         this.citasService.getCita({ codigo_cita: params.id }).subscribe(
           (resp: any) => {
             this.urlImg = `http://${resp.url_imagen}`
+            console.log(this.urlImg)
             this.cita = resp;
             this.userService.getUser(this.cita.numero_identificacion).subscribe(
               res => {
@@ -185,7 +186,16 @@ export class UpdateCitaComponent implements OnInit {
       },
       err => {
         console.log(err);
-        
+        this.citasService.deleteCita({ id: this.cita.id }).subscribe(
+          async res => {
+            await loading.dismiss();
+            await alert.present();
+            setTimeout(async () => {
+              await alert.dismiss();
+              this.router.navigate(['/user/citas'], { replaceUrl: true });
+            }, 3000);
+          }
+        )
       }
     )
    

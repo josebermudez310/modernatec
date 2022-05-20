@@ -5,11 +5,23 @@ ion-toolbar {
         --background: white;
     }
     h1 {
-        margin-left: 15px;
+        margin-left: 10px;
         position: relative;
-        font-size: 30px;
+        font-size: 45px;
         font-family: 'Poppins', sans-serif;
         font-family: 'PT Sans Narrow', sans-serif;
         color: #5d4e8e;
+        @media (max-width: 783px) {
+            font-size: 18px;
+            margin-left: none;
+        }
+    }
+    img {
+        width: 50px;
+        height: 50px;
+        @media (max-width: 441px) {
+            width: 35px;
+            height: 35px;
+        }
     }
 }

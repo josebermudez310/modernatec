@@ -45,18 +45,27 @@
                 </ion-card-content>
             </ion-card>
         </div>
-        <!--En caso de que el documento no este en la base de datos se mostrara lo siguiente-->
-        <div class="col-4" *ngIf="busqueda && !(usuariosB.length>0)">
-            <p>
-                No se encontró ningun usuario con el número indicado
-            </p>
-        </div>
         <!--Boton para devolver a ver todos los usuarios -->
-        <div class="col-3" *ngIf="busqueda">
-            <ion-button (click)="busqueda=false; usuariosB=[]">
+        <div class="text-center" *ngIf="busqueda">
+            <ion-button (click)="busqueda=false; usuariosB=[]" shape="round" fill="clear">
                 Ver todos los usuarios
             </ion-button>
         </div>
+        <!--En caso de que no se encuentre el usuario al ingresar el numero de identificación mostrara el siguiente mensaje-->
+
+        <div class=" col-12 " *ngIf="busqueda && !(usuariosB.length>0)">
+            <ion-card id="card">
+                <ion-card-header>
+                    <ion-card-title id="card-title" class="text-center"> No se encontró ningun usuario<br> con el número indicado</ion-card-title>
+                </ion-card-header>
+                <img id="svg" src="../../../assets/icon/noResultados.svg">
+                <ion-card-content>
+
+                </ion-card-content>
+            </ion-card>
+        </div>
+
+
         <!--Vista principal ,aqui se muestran todos los usuarios registrados-->
         <ng-container *ngFor="let usuario of usuarios">
             <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="!busqueda">

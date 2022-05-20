@@ -3,7 +3,6 @@
 /* en el ion content tenemos img con 
 sus respectivos tamaños y separacion de la parte superior dela pagina*/
 
-
 ion-content {
     #img {
         width: 800px;
@@ -23,12 +22,14 @@ ion-content {
         con sis separaciones del lado derecho e izquierdo*/
         #logo {
             margin-top: 15px;
-            margin-left: 35%;
             width: 166px;
             height: 166px;
-            @media (max-width: 768px) {
+            @media (min-width: 1556px) {
                 margin-top: 15px;
-                margin-left: 20%;
+                margin-left: 250px;
+            }
+            @media (min-width: 277px) {
+                margin-top: 15px;
                 width: 166px;
                 height: 166px;
             }
@@ -51,4 +52,12 @@ ion-content {
             font-size: 20px;
         }
     }
+}
+
+#contrasena {
+    cursor: pointer;
+}
+
+#registrate {
+    cursor: pointer;
 }

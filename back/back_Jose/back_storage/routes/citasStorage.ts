@@ -16,9 +16,7 @@ import { validarImgs } from '../middlewares/validarImg';
 //inicializacion del router
 export const routerCitasStorage = Router();
 //express-fileUpload
-routerCitasStorage.use(fileUpload({
-    limits: { fileSize: 6291456 }
-}));
+routerCitasStorage.use(fileUpload());
 
 routerCitasStorage.post('/:codigo', [validarJwt,validarCodigo,validarImgs], uploadCitaImg);//ruta para guardar la imagen de la cita
 routerCitasStorage.put('/:codigo', [validarJwt,validarCodigo,validarImgs], updateCitaImg);//ruta para actualizar la imagen de una cita

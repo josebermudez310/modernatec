@@ -20,6 +20,8 @@ const setUrlImg = (codigo: string, nombreImg: string) => {
     return new Promise<boolean>((resolve, reject) => {
         conection.conection.query(`update citas set url_imagen='${path}' where codigo_cita=${codigo}`, (err, resp) => {
             if (err) {
+                console.log(err);
+                
                 //si ocurre un error retornamos false            
                 reject(false);
             } else {
@@ -196,7 +198,7 @@ const deleteCitaImg = (req: Request, res: Response) => {
         //si no existe la carpeta respondemos error 400
         return res.status(400).json({
             ok: false,
-            msg: 'la cita no tiene imagenes para actualizar'
+            msg: 'la cita no tiene imagenes para eliminar'
         })
     }
     //obtenemos la imagen de la cita

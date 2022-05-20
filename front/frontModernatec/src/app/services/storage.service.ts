@@ -24,4 +24,13 @@ export class StorageService {
   getImages(id){
     return this.http.get(`${this.url}/storage/${id}`,{headers:{'x-token':this.userToken}});
   }
+  //actualizar foto de perfil
+  upPerfil(img:File,id:string){
+    //constante con la imagen como formdata
+    const formData = new FormData();
+    //agregamos la imagen
+    formData.append('img',img);
+    //retornamos observable http
+    return this.http.put(`${this.url}/storage/perfil/${id}`,formData,{headers:{'x-token':this.userToken}});
+  }
 }

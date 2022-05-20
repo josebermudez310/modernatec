@@ -6,3 +6,39 @@ img {
     width: 300px;
     height: 264px;
 }
+
+#svg {
+    width: 90%;
+    height: 70%;
+}
+
+#card {
+    margin-left: 30%;
+    width: 50%;
+    height: 100%;
+    box-shadow: none;
+    // @media (max-width: 375px) {
+    //     font-size: 15px;
+    //     width: 50%;
+    //     height: 50%;
+    // }
+    // @media (max-width: 955px) {
+    //     font-size: 12px;
+    //     width: 50%;
+    //     height: 100%;
+    // }
+}
+
+#card-title {
+    font-size: 20px;
+}
+
+span {
+    font-size: 20px;
+    @media (max-width: 375px) {
+        font-size: 10px;
+    }
+    @media (max-width: 955px) {
+        font-size: 15px;
+    }
+}

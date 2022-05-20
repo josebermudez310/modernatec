@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+      <!--Boton para cerrar el modal-->
+      <ion-button slot="end" (click)="cerrarD()" color="primary">
+          <ion-icon color="light" name="close"></ion-icon>
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <input  type="file" accept="image/*" (change)="agregarImagen($event.target)">
+  <img  [src]="preview">
+  <ion-button  expand="block" (click)="changePerfilImg()" [disabled]="!img" shape="round" type="submit" color="primary">Cambiar</ion-button>
+</ion-content>

@@ -37,6 +37,10 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'modal-update-foto-perfil',
+    loadChildren: () => import('./pages/modal-update-foto-perfil/modal-update-foto-perfil.module').then( m => m.ModalUpdateFotoPerfilPageModule)
   }
 
   

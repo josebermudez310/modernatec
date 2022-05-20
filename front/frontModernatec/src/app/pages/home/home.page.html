@@ -1,14 +1,14 @@
 <!--inicio del menu lateral-->
 <!--el ion-split-pane:Si el ancho de la pantalla del dispositivo está por debajo de cierto tamaño, 
     el panel dividido se colapsará y el menú se ocultará.-->
-<ion-split-pane when="md" contentId="main-content">
+<ion-split-pane *ngIf="load" when="md" contentId="main-content">
     <!--inicio del menu lateral-->
     <ion-menu side="start" content-id="main-content">
         <div class="menu-header-bg"></div>
         <div class="header-content">
             <!--imagen donde se vera la cara del usuario que utiliza la pltaforma, esta imagen esa por defecto
             ,tambien el id para activar en ion popover-->
-            <img src="../assets/icon/perfil.jpg" alt="" ng-click="nested-button" id="nested-button">
+            <img [src]="imagen()" alt="" ng-click="nested-button" id="nested-button">
 
             <ion-label>
                 <!-- En el apartado de nombre debera de ir el nombre de la persona quien ingreso a la pltaforma segun su rol-->
@@ -16,6 +16,7 @@
                 <h2>{{name}}</h2>
                 <!--slogan de modernatec-->
                 <P>Cuidando tu seguridad</P>
+                <p>&copy; 2022 Modernatec</p>
                 <!--Inicio del ion popover que en otras palabras en una lista plegable que el darle clik a la imagen se deplegara dos opciones
                 para el usuario  , esto conectado con el id desde imagen-->
                 <ion-popover trigger="nested-button" [dismissOnSelect]="true">
@@ -60,9 +61,11 @@
                         <br> haga clic aca </p>
                     <!--en este boton la idea es llevarlo al git hub donde se vera el
                          read me de cada uno mostrando mas información del proyecto-->
-                    <ion-button color="success" href="https://github.com/310pepe/modernatec">INFO</ion-button>
+                    <ion-button color="success" href="https://github.com/310pepe/modernatec" class="center">INFO</ion-button>
                     <img src="../assets/icon/menuPhoto.png">
+
                 </form>
+
             </div>
             <!--finalización del footer-->
         </ion-content>

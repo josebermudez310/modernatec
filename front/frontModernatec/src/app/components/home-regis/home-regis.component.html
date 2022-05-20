@@ -6,7 +6,7 @@
         <div class="">
             <!--Navegador -->
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Buscar por número de identificación" #nameP id="input">
+                <input class="form-control me-2" type="search" placeholder="Identificación" #nameP id="input" maxlength="15" required autocomplete="off">
                 <button class="btn btn-outline-info" (click)="buscar(nameP.value)" type="button">Search</button>
             </form>
 
@@ -55,18 +55,32 @@
                 </ion-card-content>
             </ion-card>
         </div>
-        <!--En caso de que no se encuentre el usuario al ingresar el numero de identificación mostrara el siguiente mensaje-->
-        <div class="col-12 col-lg-4 col-md-12 col-sm-12" *ngIf="busqueda && !(usuariosB.length>0)">
-            <p>
-                No se encontró ningun usuario con el número indicado
-            </p>
-        </div>
+
         <!--Boton para ver nuevamente a todos los usuarios-->
-        <div class="col-3" *ngIf="busqueda">
+
+        <div class="text-center" *ngIf="busqueda">
             <ion-button (click)="busqueda=false; usuariosB=[]" shape="round" fill="clear">
                 Ver todos los usuarios
             </ion-button>
         </div>
+
+
+        <!--En caso de que no se encuentre el usuario al ingresar el numero de identificación mostrara el siguiente mensaje-->
+
+        <div class=" col-12 " *ngIf="busqueda && !(usuariosB.length>0)">
+            <ion-card id="card">
+                <ion-card-header>
+                    <ion-card-title id="card-title" class="text-center"> No se encontró ningun usuario<br> con el número indicado</ion-card-title>
+                </ion-card-header>
+                <img id="svg" src="../../../assets/icon/noResultados.svg">
+                <ion-card-content>
+
+                </ion-card-content>
+            </ion-card>
+        </div>
+
+
+
         <!--Contenido principal del componente del registro de home-->
         <ng-container *ngFor="let usuario of usuarios">
             <div class=" col-12 col-lg-4 col-md-6 col-sm-12" *ngIf="!busqueda">
@@ -75,8 +89,8 @@
                     <ion-card-content>
                         <div class="row">
                             <!--Imagen por defecto-->
-                            <div class="">
-                                <ion-img alt="imagen del usuario" [src]="imagen(usuario)" class="img"></ion-img>
+                            <div class="col-12">
+                                <img alt="imagen del usuario" [src]="imagen(usuario)">
                             </div>
                             <!--información del usuario-->
                             <div class="col-12">

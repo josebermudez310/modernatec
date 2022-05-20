@@ -27,11 +27,14 @@ import { CameraPreview } from '@awesome-cordova-plugins/camera-preview/ngx';
 import { ModalCitaPageModule } from '../pages/modal-cita/modal-cita.module';
 import { ModalUserPageModule } from '../pages/modal-user/modal-user.module';
 import { AdicionarRecoComponent } from './adicionar-reco/adicionar-reco.component';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+import { ModalUpdateFotoPerfilPageModule } from '../pages/modal-update-foto-perfil/modal-update-foto-perfil.module';
 
 
 
 @NgModule({
-  providers:[CameraPreview],
+  providers:[CameraPreview,File,FileOpener],
   declarations: [
     HomeAdminComponent,
     MenuComponent,
@@ -62,7 +65,8 @@ import { AdicionarRecoComponent } from './adicionar-reco/adicionar-reco.componen
     ModalUserRegPageModule,
     ModalUserSegPageModule,
     ModalCitaPageModule,
-    ModalUserPageModule
+    ModalUserPageModule,
+    ModalUpdateFotoPerfilPageModule
   ],
   exports:[
     HomeAdminComponent,

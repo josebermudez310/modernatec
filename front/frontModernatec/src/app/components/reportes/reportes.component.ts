@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from '../../services/registro.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, Platform } from '@ionic/angular';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 
 @Component({
   selector: 'app-reportes',
@@ -15,6 +17,9 @@ export class ReportesComponent implements OnInit {
   public reporte_form: FormGroup
 
   constructor(
+    private fileOpener: FileOpener,
+    private file:File,
+    private plt:Platform,
     private registroService:RegistroService,
     private fb:FormBuilder,
     private loadingCtr:LoadingController,
@@ -68,7 +73,7 @@ export class ReportesComponent implements OnInit {
           buttons:['ok']
         })
         //llamamos a la funcion que descarga el archivo    
-        this.manageExcel(res,'reporte.xlsx');
+        await this.manageExcel(res,'reporte.xlsx');
         await loading.dismiss();
         await alert.present();
       },
@@ -85,20 +90,40 @@ export class ReportesComponent implements OnInit {
   }
 
   //funcion que maneja la descarga de archivos
-  manageExcel(res,filename){
+  async manageExcel(res, filename) {
     //constante que tiene el tipo del documento
-    const dataType= res.type;
+    const dataType = res.type;
     //variable que contendra los datos binarios del archivo
     const binaryData = [];
     binaryData.push(res);
-    
-    const filePath = window.URL.createObjectURL(new Blob(binaryData,{type:dataType}) );
-    const donwload = document.createElement('a');
-    donwload.href = filePath;
-    donwload.setAttribute('download',filename);
-    document.body.appendChild(donwload);
-    donwload.click();
-    document.body.removeChild(donwload);
+    if (this.plt.is("cordova") || this.plt.is("capacitor")) {
+      //llamar al servicio para guardar archivos en mobile
+      await this.file.writeFile(
+        this.file.externalRootDirectory + "/Download",
+        filename,
+        new Blob(binaryData),
+        {
+          replace: true,
+        }
+      ).then(async (res) => {
+        await this.fileOpener.open(this.file.externalRootDirectory + "/Download" + "/" + filename, dataType)
+      })
+    } else {
+      //url con los binarios
+      const filePath = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+      //nuevo elemento de etiqueta a
+      const donwload = document.createElement('a');
+      //asignacion de propiedad href
+      donwload.href = filePath;
+      //asignacion de propiedad download
+      donwload.setAttribute('download', filename);
+      //agregar el elimento a body
+      document.body.appendChild(donwload);
+      //simulacion del click
+      donwload.click();
+      //eliminacion del elemento de etiqueta a
+      document.body.removeChild(donwload);
+    }
   }
 
 }

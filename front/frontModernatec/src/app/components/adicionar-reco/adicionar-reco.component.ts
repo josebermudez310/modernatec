@@ -63,7 +63,7 @@ export class AdicionarRecoComponent implements OnInit {
         message:'Por favor selecciones las imagenes',
         buttons:['ok']
       });
-      await alert.present();
+      return await alert.present();
     }
     const loading = await this.loadingCtr.create({
       message:'Agregando las imagenes al reconocimiento facial'

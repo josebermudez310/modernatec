@@ -1,12 +1,13 @@
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { FaceService } from '../../services/face.service';
-import { AlertController, ModalController, LoadingController } from '@ionic/angular';
+import { AlertController, ModalController, LoadingController, Platform } from '@ionic/angular';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@awesome-cordova-plugins/camera-preview/ngx';
 import { ModalUserSegPage } from '../../pages/modal-user-seg/modal-user-seg.page';
-import { WebSocketService } from '../../services/web-socket.service';
 import { UsuariosService } from '../../services/usuarios.service';
 import { Subscription } from 'rxjs';
 import { SeguridadService } from '../../services/seguridad.service';
+import { File } from '@awesome-cordova-plugins/file/ngx';
+import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 
 @Component({
   selector: 'app-home-seg',
@@ -22,50 +23,54 @@ export class HomeSegComponent implements OnInit, OnDestroy {
   modal;
   personasActual;
   idInterval;
-  socket:Subscription;
+  socket: Subscription;
   identificando: boolean = false;
   android: boolean = false;
   load: boolean = false;
   currentStram;
   constructor(
-    private usuariosService:UsuariosService,
+    private fileOpener: FileOpener,
+    private file: File,
+    private usuariosService: UsuariosService,
     private faceService: FaceService,
     private alertController: AlertController,
     private cameraPreview: CameraPreview,
     private modalController: ModalController,
-    private segService:SeguridadService,
-    private loadingCtr:LoadingController
+    private segService: SeguridadService,
+    private loadingCtr: LoadingController,
+    private plt: Platform
   ) {
     this.cameraPreviewOpts = {
-      x: window.screen.width/2,
-      y: 100,
-      width: window.screen.width/2,
-      height: window.screen.height/5*2,
-      tapPhoto:false,
+      x: 0,
+      y: 0,
+      width: window.screen.width,
+      height: window.screen.height,
+      tapPhoto: false,
       camera: 'rear',
-      storeToFile: false
+      storeToFile: false,
+      toBack:true
     }
   }
 
   async ngOnInit() {
     await this.checkMedia();
     this.socket = this.usuariosService.getActual().subscribe(
-      res=>{
+      res => {
         console.log(res);
-        this.personasActual=res[0].total;
+        this.personasActual = res[0].total;
       }
     );
   }
 
   ngOnDestroy(): void {
     this.socket.unsubscribe();
-    this.load=false;
+    this.load = false;
     if (this.android) {
       this.cameraPreview.stopCamera();
     }
-      
+
     clearInterval(this.idInterval);
-    
+
   }
 
   async checkMedia() {
@@ -118,7 +123,7 @@ export class HomeSegComponent implements OnInit, OnDestroy {
                   'persona': this.persona,
                   'id': res.identificacion
                 },
-                backdropDismiss:false
+                backdropDismiss: false
               });
               await modal.present();
 
@@ -140,7 +145,7 @@ export class HomeSegComponent implements OnInit, OnDestroy {
               }
             }
           )
-        }else{
+        } else {
           this.identificando = false
           if (this.android) {
             this.cameraPreview.startCamera(this.cameraPreviewOpts);
@@ -159,7 +164,7 @@ export class HomeSegComponent implements OnInit, OnDestroy {
   identify() {
     this.idInterval = setInterval(() => {
       console.log('interval identify');
-      
+
       if (this.load && !this.identificando) {
         this.identificando = true;
         const picture = document.createElement('canvas') as HTMLCanvasElement;
@@ -197,50 +202,71 @@ export class HomeSegComponent implements OnInit, OnDestroy {
     this.identify();
   }
 
-  async descargarReporte(){
+  async descargarReporte() {
     const loading = await this.loadingCtr.create({
-      message:'Generando reporte'
+      message: 'Generando reporte'
     });
     await loading.present();
     this.segService.getActualmenteRegis().subscribe(
-      async resp=>{
+      async resp => {
         const alert = await this.alertController.create(
           {
-            message:'Reporte generado',
-            buttons:['ok']
+            message: 'Reporte generado',
+            buttons: ['ok']
           }
         )
         await loading.dismiss();
-        this.manageExcel(resp,'reporteActual.xlsx');
+        await this.manageExcel(resp, 'reporteActual.xlsx');
         await alert.present();
-      },async err=>{
+      }, async err => {
         const alert = await this.alertController.create(
           {
-            message:'Error al generar reporte',
-            buttons:['ok']
+            message: 'Error al generar reporte',
+            buttons: ['ok']
           }
         )
         await loading.dismiss();
         await alert.present();
       }
     )
-    
+
   }
-  
+
   //funcion que maneja la descarga de archivos
-  manageExcel(res,filename){
+  async manageExcel(res, filename) {
     //constante que tiene el tipo del documento
-    const dataType= res.type;
+    const dataType = res.type;
     //variable que contendra los datos binarios del archivo
     const binaryData = [];
     binaryData.push(res);
-    
-    const filePath = window.URL.createObjectURL(new Blob(binaryData,{type:dataType}) );
-    const donwload = document.createElement('a');
-    donwload.href = filePath;
-    donwload.setAttribute('download',filename);
-    document.body.appendChild(donwload);
-    donwload.click();
-    document.body.removeChild(donwload);
+    if (this.plt.is("cordova") || this.plt.is("capacitor")) {
+      //llamar al servicio para guardar archivos en mobile
+      await this.file.writeFile(
+        this.file.externalRootDirectory + "/Download",
+        filename,
+        new Blob(binaryData),
+        {
+          replace: true,
+        }
+      ).then(async (res) => {
+        await this.fileOpener.open(this.file.externalRootDirectory + "/Download" + "/" + filename, dataType)
+      })
+    } else {
+      //url con los binarios
+      const filePath = window.URL.createObjectURL(new Blob(binaryData, { type: dataType }));
+      //nuevo elemento de etiqueta a
+      const donwload = document.createElement('a');
+      //asignacion de propiedad href
+      donwload.href = filePath;
+      //asignacion de propiedad download
+      donwload.setAttribute('download', filename);
+      //agregar el elimento a body
+      document.body.appendChild(donwload);
+      //simulacion del click
+      donwload.click();
+      //eliminacion del elemento de etiqueta a
+      document.body.removeChild(donwload);
+    }
   }
+
 }

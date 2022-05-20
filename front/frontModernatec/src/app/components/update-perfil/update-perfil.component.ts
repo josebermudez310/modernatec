@@ -3,7 +3,8 @@ import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController, ModalController } from '@ionic/angular';
+import { ModalUpdateFotoPerfilPage } from 'src/app/pages/modal-update-foto-perfil/modal-update-foto-perfil.page';
 
 @Component({
   selector: 'app-update-perfil',
@@ -21,7 +22,8 @@ export class UpdatePerfilComponent implements OnInit {
     private router: Router,
     private userService: UsuariosService,
     private loadingCtr: LoadingController,
-    private alertCtr: AlertController
+    private alertCtr: AlertController,
+    private modalCtr:ModalController 
   ) {
     authservice.perfil().subscribe(
       res => {
@@ -107,7 +109,17 @@ export class UpdatePerfilComponent implements OnInit {
 
     }
   }
+  async change(){
+    const modal = await this.modalCtr.create({
+      component:ModalUpdateFotoPerfilPage,
+      componentProps:{
+        usuario:this.usuario
+      }
+    })
+    await modal.present();
+  }
 
   ngOnInit() { }
+  
 
 }

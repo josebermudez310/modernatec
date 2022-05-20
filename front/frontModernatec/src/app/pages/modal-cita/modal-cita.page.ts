@@ -3,6 +3,7 @@ import { UsuariosService } from '../../services/usuarios.service';
 import { RegistroService } from '../../services/registro.service';
 import { ModalController } from '@ionic/angular';
 import { CitasService } from '../../services/citas.service';
+import { SeguridadService } from '../../services/seguridad.service';
 
 @Component({
   selector: 'app-modal-cita',
@@ -18,6 +19,7 @@ export class ModalCitaPage implements OnInit {
   load: boolean = false;
   urlImg;
   constructor(
+    private seguridadService:SeguridadService,
     private userService: UsuariosService,
     private registroService: RegistroService,
     private modalCtr: ModalController,
@@ -66,7 +68,7 @@ export class ModalCitaPage implements OnInit {
         resp => {
           this.citasService.deleteFotoCita(this.cita.codigo_cita).subscribe(
             resp => {
-              this.citasService.deleteCita({ id: this.cita.id }).subscribe(
+              this.seguridadService.eliminarCita(this.cita.id).subscribe(
                 resp => {
                   this.modalCtr.dismiss();
                 },
@@ -76,7 +78,7 @@ export class ModalCitaPage implements OnInit {
               )
             },
             err => {       
-              this.citasService.deleteCita({ id: this.cita.id }).subscribe(
+              this.seguridadService.eliminarCita(this.cita.id).subscribe(
                 resp => {
                   this.modalCtr.dismiss();
                 },

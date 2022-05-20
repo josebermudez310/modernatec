@@ -3,7 +3,7 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 import { environment } from 'src/environments/environment.prod';
 import { Observable, of } from 'rxjs';
 

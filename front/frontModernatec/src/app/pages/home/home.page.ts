@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
 
   name:string;
-  opciones:any[]
+  opciones:any[];
+  usuario:any;
+  load:boolean=false;
 
   constructor(
     private authService:AuthService,
@@ -19,8 +21,10 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.authService.perfil().subscribe(
-      (res:any)=>{
+      (res:any)=>{        
+        this.usuario=res;
         this.name=res.name;
+        this.load=true;
         switch (res.rol) {
           case 1:
             this.opciones=[
@@ -71,6 +75,14 @@ export class HomePage implements OnInit {
   cerrarSesion(){
     localStorage.removeItem('token');
     this.router.navigate(['/login'],{replaceUrl:true});
+  }
+  imagen(){
+    const imagen: string = this.usuario.url_perfil;
+    if (imagen) {
+      return 'http://'+imagen;
+    }else{
+      return './assets/icon/perfil.jpg';
+    }
   }
 
 }

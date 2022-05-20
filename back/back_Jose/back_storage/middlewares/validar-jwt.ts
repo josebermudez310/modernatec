@@ -82,8 +82,46 @@ const validarJwtBoth = async (req: Request, res: Response, next: NextFunction) =
         }
     )
 }
+//validar token
+const validarJwtPerfil=(req:Request, res:Response, next: NextFunction)=>{
+    //traer variables enviadas en la peticion
+    const token = req.header('x-token');
+    //verificar que se envie el token
+    if (!token) {
+        return res.status(401).json({
+            ok: false,
+            msg: 'token no enviado'
+        });
+    }
+    //inicializacion del servicio
+    const authService: AuthService = new AuthService();
+    authService.verificarToken(token).then(
+        resp => {
+            //validamos que el token sea valido y sea de la misma persona del id enviado en la petición
+            if(resp.data.numero_identificacion == req.params.id){
+                //si son iguales dejamos continuar con el siguiente middleware
+                next();
+            }else{
+                //si no son iguales respondemos error 400
+                return res.status(400).json({
+                    ok:false,
+                    msg:'el token no pertenece al id enviado'
+                });
+            }
+        }
+    ).catch(
+        err => {
+            //si ocurre un error respondemos error 401
+            return res.status(401).json({
+                ok: false,
+                msg: 'token invalido'
+            });
+        }
+    )
+}
 //exportación del middleware
 export {
     validarJwt,
-    validarJwtBoth
+    validarJwtBoth,
+    validarJwtPerfil
 }

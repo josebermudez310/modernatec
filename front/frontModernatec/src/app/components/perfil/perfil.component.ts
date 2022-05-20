@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { StorageService } from '../../services/storage.service';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-perfil',
@@ -8,9 +12,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class PerfilComponent implements OnInit {
 
+  img:File;
+  preview:any;
   usuario:any;
   load:boolean=false;
-
+  perfilChange:boolean=false;
   constructor(
     private authService:AuthService
   ) {
@@ -22,22 +28,25 @@ export class PerfilComponent implements OnInit {
   ngOnInit() {
     
     this.authService.perfil().subscribe(
-      res=>{
+      res=>{        
         this.usuario=res;
         this.load=true;
       }
     )
   }
 
-  imagen(usuario){
-    const images: string = usuario.url_imagen;
-    if (images) {
-      const imagenes = images.split(',');
-      
-      return 'http://'+imagenes[0];
+  imagen(){
+    const imagen: string = this.usuario.url_perfil;
+    if (imagen) {
+      return 'http://'+imagen;
     }else{
       return './assets/icon/perfil.jpg';
     }
   }
+
+ 
+  
+  
+
 
 }

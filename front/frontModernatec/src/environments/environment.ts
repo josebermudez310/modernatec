@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL_WS:'http://localhost:4500',
+  BASE_URL_WS:"https://storage-modernatec.azurewebsites.net",
 };
 
 /*

@@ -1,9 +1,56 @@
 #input {
     width: 90%;
     margin-left: 1%;
+    margin-bottom: 5px;
 }
 
-.img {
-    width: auto;
-    height: auto;
+img {
+    width: 300px;
+    height: 264px;
+}
+
+span {
+    font-size: 20px;
+    @media (max-width: 375px) {
+        font-size: 10px;
+    }
+    @media (max-width: 955px) {
+        font-size: 15px;
+    }
+}
+
+ion-button {
+    font-size: 15px;
+    @media (max-width: 375px) {
+        font-size: 10px;
+    }
+    @media (max-width: 955px) {
+        font-size: 12px;
+    }
+}
+
+#card {
+    margin-left: 30%;
+    width: 50%;
+    height: 100%;
+    box-shadow: none;
+    @media (max-width: 375px) {
+        font-size: 15px;
+        width: 50%;
+        height: 50%;
+    }
+    @media (max-width: 955px) {
+        font-size: 12px;
+        width: 50%;
+        height: 100%;
+    }
+}
+
+#card-title {
+    font-size: 20px;
+}
+
+#svg {
+    width: 90%;
+    height: 70%;
 }

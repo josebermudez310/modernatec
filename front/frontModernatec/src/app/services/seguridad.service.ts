@@ -20,4 +20,8 @@ export class SeguridadService {
     return this.http.post(`${this.url}/userEnLInea`,{token:this.userToken},{responseType:'blob'as 'json'})
   }
 
+  eliminarCita(id){
+    return this.http.post(`${this.url}/deleteCita`,{token:this.userToken,id})
+  }
+
 }

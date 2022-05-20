@@ -22,14 +22,6 @@ const validarImgs=(req:Request,res:Response,next:NextFunction)=>{
     }
     //función que valida el formato y tamaño de las imagenes 
     const validar=(img:UploadedFile)=>{
-        //validar tamaño
-        if (img.truncated) {
-            //retornamos error 400 si excede el tamaño limite
-            return res.status(400).json({
-                ok:false,
-                msg:'archivos no soportados'
-            });
-        }
         //creamos un array con el nombre de la imagen para obtener la extensión de la imagen
         const nombreCortado = img.name.split('.');
         //extraemos la extensión de la imagen

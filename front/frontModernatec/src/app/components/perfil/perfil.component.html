@@ -20,46 +20,49 @@
             <!--Titulo principal-->
             <ion-card-title class="perfil">PERFIL</ion-card-title>
             <!--Imagen del perfil por defecto-->
-            <img [src]="imagen(usuario)" class="text-center">
+            <img [src]="imagen()">
+
+
+
         </ion-card-header>
         <!--Inicio del contenido principal de la card-->
         <ion-card-content>
             <ion-row>
                 <!--Informacion del usuario del apartado de perfil-->
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Nombres:</ion-label>
                         <ion-input>{{usuario.name}}</ion-input>
                     </ion-item>
                 </ion-col>
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Apellidos: </ion-label>
                         <ion-input>{{usuario.apellidos}}</ion-input>
                     </ion-item>
                 </ion-col>
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Telefono: </ion-label>
                         <ion-input>{{usuario.telefono}}</ion-input>
                     </ion-item>
                 </ion-col>
 
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Correo:</ion-label>
                         <ion-input> {{usuario.email}}</ion-input>
                     </ion-item>
                 </ion-col>
 
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Documento: </ion-label>
                         <ion-input>{{usuario.numero_identificacion}}</ion-input>
                     </ion-item>
                 </ion-col>
 
-                <ion-col size="12" size-lg="6" size-md="12" size-sm id="col">
+                <ion-col size="12" size-lg="6" sizeMd="12" sizeSm="12">
                     <ion-item>
                         <ion-label position="stacked">Rol:</ion-label>
                         <ion-input>{{usuario.rol}} </ion-input>
@@ -68,14 +71,14 @@
 
 
                 <!--botones-->
-                <ion-col size="12" sizeLg="6" sizeSm sizeMd="6" class="text-center">
+                <ion-col size="12" sizeLg="6" sizeSm sizeMd="12" class="text-center">
 
                     <ion-button [routerLink]="['/user/update-perfil']" [replaceUrl]="true" shape="round">
                         Editar
                     </ion-button>
                 </ion-col>
-                <ion-col size="12" sizeLg="6" sizeSm sizeMd="6" class="text-center">
-                    <ion-button [routerLink]="['/user/changepass']" [replaceUrl]="true" shape="round">
+                <ion-col size="12" sizeLg="6" sizeSm sizeMd="12" class="text-center">
+                    <ion-button [routerLink]="['/user/changepass']" [replaceUrl]="true" shape="round" id="button">
                         Cambiar Contraseña
                     </ion-button>
                 </ion-col>

@@ -6,12 +6,12 @@ import { Router} from 'express';
 import fileUpload from 'express-fileupload'
 
 //controllers
-import { getImg, getImgs, imgUpload } from '../controllers/storage';
+import { getImg, getImgPerfil, getImgs, imgPerfil, imgUpload } from '../controllers/storage';
 
 //middleware
 import { validarId } from '../middlewares/validarId';
 import { validarImgs } from '../middlewares/validarImg';
-import { validarJwt } from '../middlewares/validar-jwt';
+import { validarJwt, validarJwtPerfil } from '../middlewares/validar-jwt';
 
 //inicializacion del router
 export const routerStorage = Router();
@@ -23,3 +23,7 @@ routerStorage.use(fileUpload({
 routerStorage.post('/:id',[validarJwt,validarId,validarImgs],imgUpload);//subir imagenes al servidor
 routerStorage.get('/:id',[validarJwt,validarId],getImgs);//obtener todas las imagenes de un usuario
 routerStorage.get('/:id/:img',getImg);//obtener una imagen de un usuario
+
+//rutas para le gestion de las imagenes de perfil
+routerStorage.put('/perfil/:id',[validarJwtPerfil,validarImgs],imgPerfil);//actualizar foto de perfil
+routerStorage.get('/perfil/:id/:img',getImgPerfil)

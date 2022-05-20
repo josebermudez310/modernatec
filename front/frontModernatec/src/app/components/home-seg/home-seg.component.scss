@@ -1,20 +1,21 @@
-.custom-shape-divider-top-1649211862 {
+.custom-shape-divider-bottom-1649305623 {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     overflow: hidden;
     line-height: 0;
+    transform: rotate(180deg);
 }
 
-.custom-shape-divider-top-1649211862 svg {
+.custom-shape-divider-bottom-1649305623 svg {
     position: relative;
     display: block;
-    width: calc(115% + 1.3px);
-    height: 257px;
+    width: calc(100% + 1.3px);
+    height: 181px;
 }
 
-.custom-shape-divider-top-1649211862 .shape-fill {
+.custom-shape-divider-bottom-1649305623 .shape-fill {
     fill: #4F69C6;
 }
 
@@ -27,14 +28,10 @@
 }
 
 ion-card {
-    box-shadow: 2px 2px 2px 2px rgb(93, 78, 142);
-    @media (max-width: 783px) {
-        margin-top: 30%;
-    }
+    box-shadow: none;
 }
 
-.ion-card-title{
-    color: white;
+.ion-card-title {
     @media (max-width: 783px) {
         font-size: 12.5px;
     }
@@ -59,11 +56,20 @@ h2 {
     }
 }
 
-#button {
-    --border-radius: 15px;
-    margin-top: 15px;
-}
-
 #info {
     margin-top: 5%;
+}
+
+.carticon {
+    font-size: 3rem;
+}
+
+#androidbtn {
+    margin-left: 20%;
+    margin-top: 78%;
+}
+
+.transparent {
+    --background: transparent;
+    background: transparent;
 }
