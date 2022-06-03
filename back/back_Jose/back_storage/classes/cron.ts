@@ -45,7 +45,7 @@ export default class Cron {
                 //recorremos la respuesta retornada por la consulta
                 resp.forEach((element:any) => {
                     //eliminamos la cita que ya expiró
-                    this.conection.conection.query(`delete from citas where id = ${element.id}`)
+                    this.conection.conection.query(`update citas set codigo_cita='no_asistio' where id = ${element.id}`)
                 });
             }
         })
