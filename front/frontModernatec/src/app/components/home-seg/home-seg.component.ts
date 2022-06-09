@@ -56,7 +56,6 @@ export class HomeSegComponent implements OnInit, OnDestroy {
     await this.checkMedia();
     this.socket = this.usuariosService.getActual().subscribe(
       res => {
-        console.log(res);
         this.personasActual = res[0].total;
       }
     );
@@ -163,8 +162,6 @@ export class HomeSegComponent implements OnInit, OnDestroy {
 
   identify() {
     this.idInterval = setInterval(() => {
-      console.log('interval identify');
-
       if (this.load && !this.identificando) {
         this.identificando = true;
         const picture = document.createElement('canvas') as HTMLCanvasElement;

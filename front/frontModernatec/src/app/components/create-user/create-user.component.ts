@@ -135,7 +135,6 @@ export class CreateUserComponent implements OnInit {
                         }, 3000);
                       },
                       async err=>{
-                        console.log(err);
                         
                         const alert = await this.alertCtr.create({
                           message:'No se ha podido crear el usuario',

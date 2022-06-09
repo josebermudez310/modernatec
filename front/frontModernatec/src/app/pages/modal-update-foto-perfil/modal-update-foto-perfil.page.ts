@@ -25,14 +25,11 @@ export class ModalUpdateFotoPerfilPage implements OnInit {
   }
 
   agregarImagen(event) {
-
-    const reader = new FileReader();
-    this.img = event.files[0];
-    reader.readAsDataURL(event.files[0]);
-
-    reader.onload = () => {
-      this.preview = reader.result;
-    }
+    const blob:File = event.files[0]
+    blob.arrayBuffer().then((res)=>{
+      const base64String = btoa(new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+      this.preview = `data:image/jpeg;base64,${base64String}`      
+    })
   }
 
   async changePerfilImg() {

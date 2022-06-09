@@ -47,14 +47,11 @@ export class AdicionarRecoComponent implements OnInit {
   }
 
   agregarImagen(event, posicion) {
-    
-    const reader = new FileReader();
-    this.img[posicion] = event.files[0];
-    reader.readAsDataURL(event.files[0]);
-
-    reader.onload = () => {
-      this.preview[posicion] = reader.result;
-    }
+    const blob:File = event.files[0]
+    blob.arrayBuffer().then((res)=>{
+      const base64String = btoa(new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+      this.preview[posicion] = `data:image/jpeg;base64,${base64String}`      
+    })
   }
   async addLearning(){    
     //verficar que todos los campos esten validos

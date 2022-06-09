@@ -37,7 +37,6 @@ export class UpdateCitaComponent implements OnInit {
         this.citasService.getCita({ codigo_cita: params.id }).subscribe(
           (resp: any) => {
             this.urlImg = `http://${resp.url_imagen}`
-            console.log(this.urlImg)
             this.cita = resp;
             this.userService.getUser(this.cita.numero_identificacion).subscribe(
               res => {
@@ -97,7 +96,6 @@ export class UpdateCitaComponent implements OnInit {
         control.markAsTouched();
       })
     }
-    console.log(this.citaForm);
 
     const loading = await this.loadingCtr.create({
       message: 'Actualizando cita'
@@ -140,7 +138,6 @@ export class UpdateCitaComponent implements OnInit {
                 }, 3000);
               },
               err => {
-                console.log(err);
                 
               }
             )
@@ -185,7 +182,6 @@ export class UpdateCitaComponent implements OnInit {
         )
       },
       err => {
-        console.log(err);
         this.citasService.deleteCita({ id: this.cita.id }).subscribe(
           async res => {
             await loading.dismiss();
@@ -210,13 +206,10 @@ export class UpdateCitaComponent implements OnInit {
     }
   }
   agregarImagen(event, posicion) {
-
-    const reader = new FileReader();
-    this.img = event.files[0];
-    reader.readAsDataURL(event.files[0]);
-
-    reader.onload = () => {
-      this.preview[posicion] = reader.result;
-    }
+    const blob:File = event.files[0]
+    blob.arrayBuffer().then((res)=>{
+      const base64String = btoa(new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+      this.preview[posicion] = `data:image/jpeg;base64,${base64String}`      
+    })
   }
 }

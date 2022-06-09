@@ -22,9 +22,10 @@ export class AuthService {
     {
     }
 
+  
   //url de la api
   protected url = environment.BASE_URL_AUTH;
-
+  
   login(data:{email:string,password:string}){
     // 
     return this.http.post(`${this.url}/login`,data).pipe(map((data:any)=>{  

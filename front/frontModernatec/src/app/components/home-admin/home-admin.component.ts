@@ -68,7 +68,6 @@ export class HomeAdminComponent implements OnInit {
     let data = [];
     let labels = [];
     this.meses.forEach((element: any) => {
-      console.log(element);
       switch (element.mes) {
         case 1:
           labels.unshift('Enero');
@@ -145,7 +144,6 @@ export class HomeAdminComponent implements OnInit {
     let data = [];
     let labels = [];
     this.dias.forEach((element) => {
-      console.log(element);
 
       let fecha = new Date(element.fecha).toLocaleDateString();
       data.unshift(element.total)

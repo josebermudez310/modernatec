@@ -48,32 +48,21 @@ export class CitasComponent implements OnInit {
 
   cambioFecha(event) {
     this.date = new Date(event.detail.value);
-    console.log(this.date);
     this.dayCitas = [];
     this.allCitas.map(
       cita => {
-        console.log(cita.fecha);
 
         const fecha = new Date(cita.fecha);
-        console.log(fecha);
-
 
 
         const real = this.addDaysToDate(fecha, 1);
 
-        console.log(this.date.toLocaleDateString());
-        console.log(fecha.toLocaleDateString());
-
 
         if (this.date.toLocaleDateString() == real.toLocaleDateString()) {
           this.dayCitas.push(cita);
-          console.log(this.dayCitas);
-
         }
       }
     )
-
-    console.log(this.dayCitas);
   }
   addDaysToDate(date, days) {
     var res = new Date(date);
