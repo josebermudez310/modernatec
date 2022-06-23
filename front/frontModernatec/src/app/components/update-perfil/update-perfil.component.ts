@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UsuariosService } from '../../services/usuarios.service';
 import { LoadingController, AlertController, ModalController } from '@ionic/angular';
 import { ModalUpdateFotoPerfilPage } from 'src/app/pages/modal-update-foto-perfil/modal-update-foto-perfil.page';
+import { RolPipe } from '../../pipes/rol.pipe';
 
 @Component({
   selector: 'app-update-perfil',
@@ -42,7 +43,6 @@ export class UpdatePerfilComponent implements OnInit {
       telefono: [this.usuario.telefono, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]],
       email: [this.usuario.email, [Validators.required, Validators.email]],
       numero_identificacion: [{ value: this.usuario.numero_identificacion, disabled: true }],
-      rol: [{ value: this.usuario.rol, disabled: true }]
     })
   }
 

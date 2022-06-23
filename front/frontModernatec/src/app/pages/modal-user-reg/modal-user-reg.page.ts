@@ -53,6 +53,6 @@ export class ModalUserRegPage implements OnInit {
     )
   }
   imagen(imagen:string){
-    return 'http://'+imagen;
+    return 'https://'+imagen;
   }
 }

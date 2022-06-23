@@ -25,6 +25,7 @@ export class ModalUpdateFotoPerfilPage implements OnInit {
   }
 
   agregarImagen(event) {
+    this.img = event.files[0];
     const blob:File = event.files[0]
     blob.arrayBuffer().then((res)=>{
       const base64String = btoa(new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), ''))

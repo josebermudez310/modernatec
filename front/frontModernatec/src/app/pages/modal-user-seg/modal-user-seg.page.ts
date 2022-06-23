@@ -52,7 +52,7 @@ export class ModalUserSegPage implements OnInit {
     
   }
   imagen(imagen:string){
-    return 'http://'+imagen;
+    return 'https://'+imagen;
   }
 
   registrar(){

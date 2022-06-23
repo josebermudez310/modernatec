@@ -30,6 +30,8 @@ import { AdicionarRecoComponent } from './adicionar-reco/adicionar-reco.componen
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { ModalUpdateFotoPerfilPageModule } from '../pages/modal-update-foto-perfil/modal-update-foto-perfil.module';
+import { PipesModule } from '../pipes/pipes.module';
+
 
 
 
@@ -56,6 +58,7 @@ import { ModalUpdateFotoPerfilPageModule } from '../pages/modal-update-foto-perf
     AdicionarRecoComponent,
   ],
   imports: [
+    PipesModule,
     CommonModule,
     IonicModule,
     NgChartsModule,

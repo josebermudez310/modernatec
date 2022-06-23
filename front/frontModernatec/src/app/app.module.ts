@@ -12,6 +12,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { environment } from '../environments/environment';
 //sockets
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { ComponentsModule } from './components/components.module';
 const config: SocketIoConfig = { url: environment.BASE_URL_WS, options: {} };
 
 @NgModule({
@@ -23,7 +24,8 @@ const config: SocketIoConfig = { url: environment.BASE_URL_WS, options: {} };
     AppRoutingModule,
     HttpClientModule,
     NgChartsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    ComponentsModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

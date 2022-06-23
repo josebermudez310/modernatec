@@ -37,6 +37,7 @@ export class NewPasswordPage implements OnInit {
       validators:[this.passwordIgual('password','password1')]
     })
   }
+ 
 
   //creacion funcion que valida campos
   passwordIgual( password:string, password1:string ){
@@ -52,6 +53,16 @@ export class NewPasswordPage implements OnInit {
 
     }
   }
+
+  //validar que los campos esten correctos
+  get pass1NoValido(){
+    return this.formulario.get('password').invalid && this.formulario.get('password').touched
+  }
+  //validar que los campos esten correctos
+  get pass2NoValido(){
+    return this.formulario.get('password1').invalid && this.formulario.get('password1').touched
+  }
+  
 
   async changePass(){    
     //verificar que el formulario sea valido

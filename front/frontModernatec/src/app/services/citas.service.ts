@@ -71,4 +71,8 @@ export class CitasService {
     return this.http.delete(`${this.urlStorage}/${codigoCita}`,{headers:{'x-token':this.userToken}});
   }
 
+  inforacionCita(codigoCita){
+    return this.http.post(`${this.url}/informacion`,{codigo_cita:codigoCita})
+  }
+
 }

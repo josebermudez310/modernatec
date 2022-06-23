@@ -36,7 +36,7 @@ export class UpdateCitaComponent implements OnInit {
       params => {
         this.citasService.getCita({ codigo_cita: params.id }).subscribe(
           (resp: any) => {
-            this.urlImg = `http://${resp.url_imagen}`
+            this.urlImg = `https://${resp.url_imagen}`
             this.cita = resp;
             this.userService.getUser(this.cita.numero_identificacion).subscribe(
               res => {
@@ -206,6 +206,7 @@ export class UpdateCitaComponent implements OnInit {
     }
   }
   agregarImagen(event, posicion) {
+    this.img = event.files[0];
     const blob:File = event.files[0]
     blob.arrayBuffer().then((res)=>{
       const base64String = btoa(new Uint8Array(res).reduce((data, byte) => data + String.fromCharCode(byte), ''))

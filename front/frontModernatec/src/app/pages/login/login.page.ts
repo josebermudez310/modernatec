@@ -57,7 +57,6 @@ export class LoginPage implements OnInit {
 
   //* -> metodo que enviara la peticion
   async submitPost() {
-    // http://127.0.0.1:8000/api/auth/login
 
     if (this.login_form.invalid){
       return Object.values(this.login_form.controls).forEach(control=>{

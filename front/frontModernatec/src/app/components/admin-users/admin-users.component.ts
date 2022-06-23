@@ -66,9 +66,9 @@ export class AdminUsersComponent implements OnInit {
     if (images) {
       const imagenes = images.split(',');
       
-      return 'http://'+imagenes[0];
+      return 'https://'+imagenes[0];
     }else{
-      return '../../../assets/icon/card.jpg';
+      return '../../../assets/icon/female.svg';
     }
   }
 

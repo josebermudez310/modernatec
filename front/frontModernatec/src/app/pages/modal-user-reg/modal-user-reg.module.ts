@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 import { ModalUserRegPageRoutingModule } from './modal-user-reg-routing.module';
 
 import { ModalUserRegPage } from './modal-user-reg.page';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   imports: [
+    PipesModule,
     CommonModule,
     FormsModule,
     IonicModule,

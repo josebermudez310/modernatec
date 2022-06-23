@@ -64,9 +64,9 @@ export class HomeRegisComponent implements OnInit {
     if (images) {
       const imagenes = images.split(',');
       
-      return 'http://'+imagenes[0];
+      return 'https://'+imagenes[0];
     }else{
-      return '../../../assets/icon/lado2.jpg';
+      return '../../../assets/icon/male.svg';
     }
   }
 

@@ -27,7 +27,7 @@ export class ModalCitaPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.urlImg = `http://${this.cita.url_imagen}`
+    this.urlImg = `https://${this.cita.url_imagen}`
     this.fecha = new Date();
   
     this.userService.getUser(this.cita.numero_identificacion).subscribe(

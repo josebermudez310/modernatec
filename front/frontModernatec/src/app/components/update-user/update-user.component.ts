@@ -77,7 +77,7 @@ export class UpdateUserComponent implements OnInit {
       numero_identificacion: [this.usuario[0].numero_identificacion, [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(5)]],
       telefono: [this.usuario[0].telefono, [Validators.required, Validators.pattern('[0-9]+'), Validators.minLength(10), Validators.maxLength(10)]],
       email: [this.usuario[0].email, [Validators.required, Validators.email]],
-      rol: [this.usuario[0].rol, [Validators.required]],
+      rol: [`${this.usuario[0].rol}`, [Validators.required]],
       id_contratoA: [{ value: this.contrato?.id_contrato, disabled: true }],
       fecha_inicioA: [{ value: this.contrato?.fecha_inicio, disabled: true }],
       fecha_finA: [{ value: this.contrato?.fecha_fin, disabled: true }]
@@ -267,6 +267,6 @@ export class UpdateUserComponent implements OnInit {
    
   }
   imagen(imagen) {
-    return 'http://' + imagen;
+    return 'https://' + imagen;
   }
 }

@@ -32,6 +32,10 @@ const routes: Routes = [
     path: 'new-password',
     loadChildren: () => import('./pages/new-password/new-password.module').then( m => m.NewPasswordPageModule),
     canActivate:[CodigoVerificacionGuard]
+  },  
+  {
+    path: 'verificacion-cita',
+    loadChildren: () => import('./pages/verificacion-cita/verificacion-cita.module').then( m => m.VerificacionCitaPageModule)
   },
   {
     path: '**',
@@ -39,8 +43,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'modal-update-foto-perfil',
-    loadChildren: () => import('./pages/modal-update-foto-perfil/modal-update-foto-perfil.module').then( m => m.ModalUpdateFotoPerfilPageModule)
+    path: 'modal-verificacion-cita',
+    loadChildren: () => import('./pages/modal-verificacion-cita/modal-verificacion-cita.module').then( m => m.ModalVerificacionCitaPageModule)
   }
 
   

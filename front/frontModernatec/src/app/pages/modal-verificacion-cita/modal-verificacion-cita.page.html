@@ -1,0 +1,34 @@
+<!--contenido del modal -->
+<ion-content>
+    <!--inicio de la card-->
+    <ion-card id="card">
+
+        <!--inicio del contenido principal del modal-->
+        <ion-card-content>
+            <div class="row">
+                <h1 class="text-center" color="dark">HOLA! ESTA ES TU CITA</h1>
+
+                <!--incercion de la imagen del usuario por defecto-->
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12" id="imagen">
+                    <img alt="imagen de la cita" [src]="cita.url_imagen|urlImg" class="img">
+                </div>
+                <!--información del usuario-->
+                <div class="col-12 col-lg-6 col-md-12 col-sm-12" id="info">
+                    <ion-item>Codigo de la cita: {{cita.codigo_cita}} </ion-item>
+                    <ion-item>Fecha: {{cita.fecha}} </ion-item>
+                    <ion-item>Hora: {{cita.hora}} </ion-item>
+                    <ion-item>Area: {{cita.area}} </ion-item>
+                    <ion-item>Correo solicitante: {{cita.correo_solicitante}} </ion-item>
+
+                </div>
+
+            </div>
+            <!--Boton para confirmar-->
+
+
+        </ion-card-content>
+        <ion-button color="primary" expand="block" id="button" shape="round" (click)="close()">
+            Cerrar
+        </ion-button>
+    </ion-card>
+</ion-content>

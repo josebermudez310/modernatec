@@ -24,6 +24,6 @@ export class ModalUserPage implements OnInit {
     this.modalController.dismiss();
   }
   imagen(imagen:string){
-    return 'http://'+imagen;
+    return 'https://'+imagen;
   } 
 }

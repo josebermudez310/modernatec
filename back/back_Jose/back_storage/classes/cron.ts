@@ -15,6 +15,8 @@ export default class Cron {
     }
     //cron para eliminar las cuentas no confirmadas despues de 30 dias
     public correoNoConfirmado = cron.schedule('0,5,10,15,20,25,30,35,40,45,50,55 * * * *',async()=>{
+        console.log('cron1');
+        
         //consulta para traer todos los usuarios no conectados
         this.conection.conection.query('select * from users where confirmed=0',(err,resp)=>{
             if(resp){
@@ -39,15 +41,21 @@ export default class Cron {
     })
     //cron  para eliminar las citas cuya fecha y hora ya expiró
     public citaExpirada = cron.schedule('0,5,10,15,20,25,30,35,40,45,50,55 * * * *',async()=>{
+        console.log('cron2');
+        
         //consulta para traer todas las citas que tengan fecha menor a la actual
         this.conection.conection.query('select * from citas where fecha<current_date()',(err,resp)=>{
             if(resp){
                 //recorremos la respuesta retornada por la consulta
                 resp.forEach((element:any) => {
                     //eliminamos la cita que ya expiró
-                    this.conection.conection.query(`update citas set codigo_cita='no_asistio' where id = ${element.id}`)
+                    this.conection.conection.query(`update citas set codigo_cita=null where id = ${element.id}`)
                 });
             }
         })
-    })
+    },{
+        scheduled:false,
+        timezone:'America/Bogota'
+    }
+    )
 }

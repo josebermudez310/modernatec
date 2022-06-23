@@ -38,7 +38,7 @@ export class PerfilComponent implements OnInit {
   imagen(){
     const imagen: string = this.usuario.url_perfil;
     if (imagen) {
-      return 'http://'+imagen;
+      return 'https://'+imagen;
     }else{
       return './assets/icon/perfil.jpg';
     }

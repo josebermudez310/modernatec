@@ -7,12 +7,8 @@ import cors from 'cors';
 import bodyParser from "body-parser";
 import { routerStorage } from "./routes/storage";
 import { routerCitasStorage } from './routes/citasStorage';
-import Cron from './classes/cron';
 
-//llamamos al cron
-const cron = new Cron();
-//iniciamos el cron
-cron.correoNoConfirmado.start();
+
 //llamamos la instance del servidor
 const server = Server.instance;
 
