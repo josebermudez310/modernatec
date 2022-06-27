@@ -1,16 +1,21 @@
 <?php
 
+use App\Exports\SeguridadExport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;  //controlador de regitros y autenticacion con tokens
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\CorreosController; //controlador del envio de correos
+use App\Http\Controllers\CronJobController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistroController;
+use App\Http\Controllers\SeguridadController;
+use Maatwebsite\Excel\Row;
 
 /*
 |--------------------------------------------------------------------------
 | API Routes
+
 |--------------------------------------------------------------------------
 |
 | Here is where you can register API routes for your application. These
@@ -50,6 +55,17 @@ Route::get('verificacion_correo/{code}', [CorreosController::class, 'verificacio
 
 
 
+
+
+
+// Route::get('Cron_Confirmed', [CronJobController::class, 'Cron_Confirmed']); // controlador para verificar que el correo que estan registrando tengan acceso
+/**
+ * 13-06-2022
+ * Robin David Rodriguez Bautista 
+ * Solicitud de que se pueda visualizar el detalle de la cita para los invitados
+ */
+Route::post('citas/informacion', [CitasController::class, 'show_invitado']);        /**acceder a la informacion de una cita en espesifico  */
+
 Route::group([
     'middleware' => 'api',    // se llama al middelware para optenerlo en la api
     'prefix' => 'users'        //se coloca el prefix auth para que todas las url que lo contengan soliciten tokens esecto la de register y la de login
@@ -70,6 +86,8 @@ Route::group([
      * 31-03-2021
      * creacion  de ruta para actualizar la informacion del perfil 
      */
+
+
 
     Route::post('perfil_update', [UserController::class, 'perfil_update']);/**controlador para editar la informacion del perfil  */
 });
@@ -101,3 +119,23 @@ Route::group([
     Route::post('UltimoRegistro', [RegistroController::class, 'UltimoRegistro']);/**subir el archivo para generar registros a la base de datos  */
 });
 
+
+/**
+ * 30-04-2022
+ * Robin David Rodriguez Bautista 
+ * Solicitud de servicio para descargar excel sobre los registros de entrada 
+ */
+Route::group([
+    'middleware' => 'api',    // se llama al middelware para optenerlo en la api
+    'prefix' => 'Seguridad'        //se coloca el prefix auth para que todas las url que lo contengan soliciten tokens esecto la de register y la de login
+], function ($router) {
+
+    Route::post('userEnLInea', [SeguridadController::class, 'userEnLInea']); // ruta para descargar excel de los usuarios que estan dentro de la entidad 
+/** 31-05-2022 
+ *  Robin David Rodriguez Bautista 
+ *  solicitud de implementar servicio para eliminar el codigo del usuario cuando se confirma la cita.   
+*/
+
+    Route::post('deleteCita', [SeguridadController::class,'deleteCita']);
+
+});

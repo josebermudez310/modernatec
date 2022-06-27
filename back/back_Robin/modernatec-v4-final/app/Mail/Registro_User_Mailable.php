@@ -18,9 +18,18 @@ class Registro_User_Mailable extends Mailable
      * @return void
      */
     private $codigo;
-    public function __construct($code)
+    /**
+     * 25/04/2022 
+     * Robin David Rodriguez Bautista 
+     * solicitud de enviar el codigo de confirmacion en el mismo correo en el que se envia la contraseña 
+     */
+    private $code_confirmacion;
+
+    public function __construct($code,$confirmacion)
     {
         $this->codigo = $code;
+        /**codigo para de confirmacion */
+        $this->code_confirmacion = $confirmacion;
     }
 
     /**
@@ -32,6 +41,7 @@ class Registro_User_Mailable extends Mailable
     {
         return $this->view('emails.Registro_User') //devolvemos una vista y ademas le pasamos la variable con el codigo que va a ser utilizado
         ->with([
+             'code_confirmacion' => $this->code_confirmacion,
             'code' => $this->codigo,  // codigo que se va a enviar
         ]);
     }

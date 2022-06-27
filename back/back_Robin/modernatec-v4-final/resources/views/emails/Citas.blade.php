@@ -8,6 +8,7 @@
     <p>ademas tambien debe de tener en cuenta este codigo para el dia de su cita </p>
     <p>Este es el codigo de su cita:</p>
     <h2>{{$code}}</h2>
+    <p>para poder ver el detalle de la cita ingresa al siguiente link <a href="modernatec.ml/verificacion-cita">Informacion cita</a></p>
 </body>
 </html>
 

@@ -65,6 +65,7 @@ export class ReportesComponent implements OnInit {
     //llamado al servicio de descarga de reportes
     this.registroService.descargarReporte(this.reporte_form.value).subscribe(
       async res=>{
+        console.log(res);
         
         //reseteamos el formulario
         this.reporte_form.reset();

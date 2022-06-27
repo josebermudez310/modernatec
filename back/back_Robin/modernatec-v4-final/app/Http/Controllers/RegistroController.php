@@ -13,6 +13,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class RegistroController extends Controller
 {
+    
 
     public function __construct()
     {

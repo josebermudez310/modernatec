@@ -67,6 +67,8 @@ export class DataBaseComponent implements OnInit {
         await alert.present();
       },
       async err=>{
+        console.log(err);
+        
         const alert = await this.alertCtr.create({
           message:'Error al cargar base de datos, asgurese que el archivo cumpla con los parámetros especificados',
           buttons:['ok']

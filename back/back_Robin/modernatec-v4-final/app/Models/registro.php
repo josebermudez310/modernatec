@@ -19,4 +19,6 @@ class registro extends Model
         'numero_identificacion', // llave foranea 
 
     ];
+
+    
 }

@@ -1,0 +1,19 @@
+ion-content {
+    --background: #eaeaea;
+}
+
+#imagen {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-top: 10%;
+}
+
+#texto {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 60px;
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 30%;
+}

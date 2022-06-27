@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Registro_User_Mailable;
+use Illuminate\Support\Str;
+use Faker\Generator as Faker;
+
+
 
 use Illuminate\Http\Request;
 
@@ -55,7 +59,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Faker $faker)
     {
         $user = response()->json(auth()->user());
         /** traemos el token  */
@@ -84,23 +88,36 @@ class UserController extends Controller
                 return response()->json($validator->errors()->toJson(), 400);
             }
 
+
             $user = User::create(array_merge(     // incriptacion de la contraseña
                 $validator->validate(),
-                ['password' => bcrypt($request->password)]
+                ['password' => bcrypt($request->password)],
+                ['codes' => $faker->unique()->passthrough(Str::random(20))] // codigo que vamos a enviar 
+
             ));
+            /**
+             * 25/04/2022
+             * Robin David Rodriguez Bautista 
+             * Solicitud que se envie el codigo para confirmar el correo
+             */
+
+             $confirmacion = $user->codes; // asignamos el codigo a una variable 
+ 
+            
 
             /**
              * 23-03-2022
              * Robin David Rodriguez Bautista
              * solicitud de retornar un correo cuando se registra un usuario en el aplicativo
              */
-            $code = $request->password;/**pasamos la contraseña a la vista  */
-            $correo = new Registro_User_Mailable($code);/**enviamos el correo */
-            Mail::to($request->email)->send($correo);/**enviamos el correo que se esta registrando  */
-            return response()->json([             //mensaje de que un usuario se registro exitosamente
-                'message' => '¡Usuario registrado exitosamente!',
-                'user' => $user
-            ], 201);
+            
+             $code = $request->password;/**pasamos la contraseña a la vista  */
+             $correo = new Registro_User_Mailable($code, $confirmacion);/**enviamos el correo */
+             Mail::to($request->email)->send($correo);/**enviamos el correo que se esta registrando  */
+             return response()->json([             //mensaje de que un usuario se registro exitosamente
+                 'message' => '¡Usuario registrado exitosamente!',
+                 'user' => $user
+             ], 201);
         } else
         /**en caso de que no tenga el rol 1 se mostrara el siguiente mensaje  */
         {

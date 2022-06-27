@@ -14,6 +14,30 @@ use Illuminate\Support\Facades\DB;
 class CitasController extends Controller
 {
 
+    
+    public function show_invitado(Request $request)
+    {
+        $codigo = $request->codigo_cita;
+        /**devuelve la cita con la que esta registrado el codigo  */
+        if ($codigo) {
+            $user = DB::table('citas')->select("*")->where('codigo_cita', $codigo)->first();
+            if ($user) {
+                return $user;
+            }else{
+                return response()->json([
+                    'message' => 'Error no se encontaron los datos',
+                ]);
+            }
+         
+        }else{
+            return response()->json([
+                'message' => 'Error al enviar los datos, revise que se esten enviando todos los datos correctamente',
+            ]);
+        }
+        
+    }
+
+
     public function index(Request $request)
     /**Funcion trae todas las citas creadas */
     {
@@ -95,6 +119,7 @@ class CitasController extends Controller
         return $user;
     }
 
+
     public function update(Request $request)
     {
         $validator =  Validator::make(
@@ -167,7 +192,7 @@ class CitasController extends Controller
 
         $user = response()->json(auth()->user());/**asignamos la informacion del token a una variable  */
         $rol_map = ($user->{'original'}->{'rol'});/**mapeamos el rol con el que biene el token  */
-        if ($rol_map == 1)/**si el rol es 1 entonces podra eliminar la cita  */
+        if ($rol_map == 1 || $rol_map == 3)/**si el rol es 1 entonces podra eliminar la cita  */
         {
 
             /**
